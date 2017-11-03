@@ -1,11 +1,12 @@
-img{/*
-  float:left;
-  dilpay:block;
-  margin:auto;*/
-}
 
-h1{
-  text-align: center;
+#logo {
+  width: 100px;
+  height: 100px;
+  padding: 10px 30px;
+}
+.form .logo img {
+  display: block;
+  width: 100%;
 }
 
 #connexion{
@@ -17,7 +18,7 @@ h1{
 }
 
 #navigation{
-  background-color: #429398;  /* Couleur de fond */
+  background-color: #429398;  /* Couleur du header */
 }
 
 #navigation

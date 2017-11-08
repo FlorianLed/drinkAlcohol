@@ -1,16 +1,59 @@
-<div class="form">
+<div class="container">
   <div class="logo"><img src="http://www.novemberfire.com/shirtspopup/NFTpop137.gif"/></div>
-  <form class="register-form">
-    <input type="text" placeholder="name"/>
-    <input type="password" placeholder="password"/>
-    <input type="text" placeholder="email address"/>
-    <button>create</button>
-    <p class="message">Already registered? <a href="#">Sign In</a></p>
-  </form>
-  <form>
-    <input type="text" placeholder="Pseudo"/>
-    <input type="password" placeholder="Mot de passe"/>
-    <button>Se connecter</button>
-    <p class="message">Pas encore enregistré ? <a href="#">Créer un compte</a></p>
-  </form>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Se connecter</a>
+        </h4>
+      </div>
+
+      <div id="collapse1" class="panel-collapse collapse in">
+
+        <form>
+
+          <div class="input-group" id="p">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="email" type="text" class="form-control" name="Pseudo" placeholder="Pseudo">
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input id="password" type="password" class="form-control" name="MP" placeholder="Mot de passe">
+          </div>
+
+          <div class="checkbox">
+            <label><input type="checkbox" name="remember"> Se souvenir </label>
+          </div>
+
+          <button type="submit" class="btn btn-sm btn-primary btn-lg btn-block">Se connecter</button>
+
+        </form>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">S'inscrire</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <form>
+
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+

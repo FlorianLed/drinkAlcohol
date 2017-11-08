@@ -4,17 +4,18 @@
 <div>
   <nav id="navigation">
     <ul>
-      <li> <a class="menu" href="">Accueil</a>  </li>
-      <li> <a class="menu" href="">Catégorie</a>       </li>
-      <li> <a class="menu" href="">A propos</a> </li>
-      <li> <a class="menu" href="">Contact</a>  </li>
+      <li> <a routerLink="/accueil" class="menu">Accueil</a>        </li>
+      <li> <a routerLink="/catégorie" class="menu" >Catégorie</a>   </li>
+      <li> <a routerLink="/à propos" class="menu" >A propos</a>     </li>
+      <li> <a routerLink="/contact" class="menu" >Contact</a>       </li>
 
       <!-- Barre de recherche -->
       <li><form id="barre_recherche" action="/recherche" method="get">
-        <input id="recherche_text" name="recherche_text" type="text" placeholder="Mot clé" />
-        <input id="recherche_btn" type="submit" value="Rechercher" />
-      </form></li>
-      <li> <a href="" title="Panier">Mon panier</a> </li>
+            <input id="recherche_text" name="recherche_text" type="text" placeholder="Mot clé" />
+            <input id="recherche_btn" type="submit" value="Rechercher" />
+          </form>
+      </li>
+      <li> <a routerLink="/panier" title="Panier">Mon panier</a> </li>
     </ul>
   </nav>
 </div>

@@ -8,6 +8,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AccueilComponent } from './accueil/accueil.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 
 const routes: Routes= [
@@ -21,6 +22,9 @@ const routes: Routes= [
     path: "connexion", component: ConnexionComponent
   },
   {
+    path: "inscription", component: InscriptionComponent
+  },
+  {
     path: "", redirectTo: "/accueil", pathMatch: "full"
   }
 ];
@@ -30,6 +34,7 @@ const routes: Routes= [
     HeaderComponent,
     ConnexionComponent,
     AccueilComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,15 @@ const routes: Routes= [
     path: "accueil", component: AccueilComponent
   },
   {
+    path: "catégorie", component: AccueilComponent
+  },
+  {
+    path: "à_propos", component: AccueilComponent
+  },
+  {
+    path: "mon_panier", component: AccueilComponent
+  },
+  {
     path: "header", component: HeaderComponent
   },
   {

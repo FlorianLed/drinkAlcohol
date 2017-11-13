@@ -1,24 +1,24 @@
 <div class="container">
   <br>
-  <form class="form-horizontal" method="post" #formulaire="ngForm" (submit)="createUser()">
+  <form class="form-horizontal" method="post" #formulaire="ngForm" (submit)="creerUtilisateur()">
     <div class="form-group">
       <label class="control-label col-sm-2">Nom:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="nom" placeholder="Entrer votre nom" name="nom" [(ngModel)]="tmpInscription.nom" required>
+        <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom" name="nom" [(ngModel)]="tmpInscription.nom" required>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Prénom:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="prenom" placeholder="Entrer votre prénom" name="prenom" [(ngModel)]="tmpInscription.prenom" required>
+        <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom" name="prenom" [(ngModel)]="tmpInscription.prenom" required>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Date de naissance:</label>
       <div class="col-sm-10">
-        <input type="date" class="form-control" id="jourNaiss" placeholder="Jour" name="jourNaiss" [(ngModel)]="tmpInscription.dateNaissance" required>
+        <input type="date" class="form-control" id="jourNaiss" name="jourNaiss" [(ngModel)]="tmpInscription.dateNaissance" required>
       </div>
     </div>
 
@@ -27,7 +27,7 @@
       <div class="col-sm-10" >
         <div class="row">
           <div class="col-sm-6"><input type="text" class="form-control" id="Ville" placeholder="Ville" name="Ville" [(ngModel)]="tmpInscription.ville" required></div>
-          <div class="col-sm-4"><input type="number" class="form-control" id="cp" placeholder="Code postale" name="cp" [(ngModel)]="tmpInscription.cp" required></div>
+          <div class="col-sm-4"><input type="number" class="form-control" id="cp" placeholder="Code postale" name="cp" [(ngModel)]="tmpInscription.codePostal" required></div>
         </div>
         <br>
         <div class="row">
@@ -40,35 +40,35 @@
     <div class="form-group">
       <label class="control-label col-sm-2">Gsm:</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="gsm" placeholder="Entrer votre numéro téléphone" name="gsm" [(ngModel)]="tmpInscription.gsm" required>
+        <input type="number" class="form-control" id="gsm" placeholder="Entrez votre numéro de téléphone" name="gsm" [(ngModel)]="tmpInscription.gsm" required>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Adresse e-mail:</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Entrer votre adresse électronique" name="email" [(ngModel)]="tmpInscription.mail" required>
+        <input type="email" class="form-control" id="email" placeholder="Entrez votre adresse électronique" name="email" [(ngModel)]="tmpInscription.mail" required>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Pseudos:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="pseudos" placeholder="Entrer votre Pseudos" name="pseudos" [(ngModel)]="tmpInscription.pseudos" required>
+        <input type="text" class="form-control" id="pseudos" placeholder="Entrez votre Pseudos" name="pseudos" [(ngModel)]="tmpInscription.pseudos" required>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Mot de passe:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="mp" placeholder="Entrer votre mot de passe" name="mp" [(ngModel)]="tmpInscription.mp" required>
+        <input type="text" class="form-control" id="mp" placeholder="Entrez votre mot de passe" name="mp" [(ngModel)]="tmpInscription.mp" required>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Confirmer le mot de passe:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="cmp" placeholder="Confirmation" name="cmp" [(ngModel)]="tmpInscription.cmp" required>
+        <input type="text" class="form-control" id="cmp" placeholder="Confirmer votre mot de passe" name="cmp" [(ngModel)]="tmpInscription.cmp" required>
       </div>
     </div>
 

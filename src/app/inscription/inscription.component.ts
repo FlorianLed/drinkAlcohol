@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Inscription} from "../inscription";
 
 @Component({
   selector: 'app-inscription',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InscriptionComponent implements OnInit {
 
+  public tmpInscription: Inscription = new Inscription();
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  public creerUtilisateur(){
+    this.tmpInscription = new Inscription();
+  }
+
+
 
 }

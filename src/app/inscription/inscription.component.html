@@ -4,21 +4,42 @@
     <div class="form-group">
       <label class="control-label col-sm-2">Nom:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom" name="nom" [(ngModel)]="tmpInscription.nom" required>
+        <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom"  required  [(ngModel)]="tmpInscription.nom" name="nom" #nom="ngModel">
+
+        <div  *ngIf="nom.errors && (nom.dirty || nom.touched)" class="alert alert-danger">
+          <div  [hidden]="!nom.errors.required">
+            Ce champs n'est pas rempli !
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Prénom:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom" name="prenom" [(ngModel)]="tmpInscription.prenom" required>
+        <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom" name="prenom" [(ngModel)]="tmpInscription.prenom" required #prenom="ngModel">
+
+        <div  *ngIf="prenom.errors && (prenom.dirty || prenom.touched)" class="alert alert-danger">
+          <div  [hidden]="!prenom.errors.required">
+            Ce champs n'est pas rempli !
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Date de naissance:</label>
       <div class="col-sm-10">
-        <input type="date" class="form-control" id="jourNaiss" name="jourNaiss" [(ngModel)]="tmpInscription.dateNaissance" required>
+        <input type="date" class="form-control" id="jourNaiss" name="jourNaiss" [(ngModel)]="tmpInscription.dateNaissance" required #jourNaiss="ngModel">
+
+        <div  *ngIf="jourNaiss.errors && (jourNaiss.dirty || jourNaiss.touched)" class="alert alert-danger">
+          <div  [hidden]="!jourNaiss.errors.required">
+            Ce champs n'est pas rempli !
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -26,13 +47,49 @@
       <label class="control-label col-sm-2">Lieu d'habitation:</label>
       <div class="col-sm-10" >
         <div class="row">
-          <div class="col-sm-6"><input type="text" class="form-control" id="Ville" placeholder="Ville" name="Ville" [(ngModel)]="tmpInscription.ville" required></div>
-          <div class="col-sm-4"><input type="number" class="form-control" id="cp" placeholder="Code postale" name="cp" [(ngModel)]="tmpInscription.codePostal" required></div>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="ville" placeholder="Ville" name="ville" [(ngModel)]="tmpInscription.ville" required #ville="ngModel">
+
+            <div  *ngIf="ville.errors && (ville.dirty || ville.touched)" class="alert alert-danger">
+              <div  [hidden]="!ville.errors.required">
+                Ce champs n'est pas rempli !
+              </div>
+            </div>
+
+          </div>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="cp" placeholder="Code postale" name="cp" [(ngModel)]="tmpInscription.cp" required  #cp="ngModel">
+
+            <div  *ngIf="cp.errors && (cp.dirty || cp.touched)" class="alert alert-danger">
+              <div  [hidden]="!cp.errors.required">
+                Ce champs n'est pas rempli !
+              </div>
+            </div>
+
+          </div>
         </div>
         <br>
         <div class="row">
-          <div class="col-sm-6"><input type="text" class="form-control" id="rue" placeholder="Rue" name="rue" [(ngModel)]="tmpInscription.rue" required></div>
-          <div class="col-sm-4"><input type="number" class="form-control" id="num" placeholder="Numéro" name="num" [(ngModel)]="tmpInscription.num" required></div>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="rue" placeholder="Rue" name="rue" [(ngModel)]="tmpInscription.rue" required #rue="ngModel">
+
+            <div  *ngIf="rue.errors && (rue.dirty || rue.touched)" class="alert alert-danger">
+              <div  [hidden]="!rue.errors.required">
+                Ce champs n'est pas rempli !
+              </div>
+            </div>
+
+          </div>
+          <div class="col-sm-4">
+            <input type="number" class="form-control" id="num" placeholder="Numéro" name="num" [(ngModel)]="tmpInscription.num" required #num="ngModel">
+
+            <div  *ngIf="num.errors && (num.dirty || num.touched)" class="alert alert-danger">
+              <div  [hidden]="!num.errors.required">
+                Ce champs n'est pas rempli !
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
@@ -40,35 +97,73 @@
     <div class="form-group">
       <label class="control-label col-sm-2">Gsm:</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="gsm" placeholder="Entrez votre numéro de téléphone" name="gsm" [(ngModel)]="tmpInscription.gsm" required>
+        <input type="number" class="form-control" id="gsm" placeholder="Entrez votre numéro de téléphone" name="gsm" [(ngModel)]="tmpInscription.gsm" required #gsm="ngModel">
+
+        <div  *ngIf="gsm.errors && (gsm.dirty || gsm.touched)" class="alert alert-danger">
+          <div  [hidden]="!gsm.errors.required">
+            Ce champs n'est pas rempli !
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Adresse e-mail:</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Entrez votre adresse électronique" name="email" [(ngModel)]="tmpInscription.mail" required>
+        <input type="email" class="form-control" id="email" placeholder="Entrez votre adresse électronique" required [(ngModel)]="tmpInscription.mail" name="email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+        <div  *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+          <div  [hidden]="!email.errors.required">
+            Ce champs n'est pas rempli !
+          </div>
+          <div  [hidden]="!email.errors.pattern">
+            Email est invalide !
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Pseudos:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="pseudos" placeholder="Entrez votre Pseudos" name="pseudos" [(ngModel)]="tmpInscription.pseudos" required>
+        <input type="text" class="form-control" id="pseudos" placeholder="Entrez votre Pseudos" name="pseudos" [(ngModel)]="tmpInscription.pseudos" required #pseudos="ngModel">
+
+        <div  *ngIf="pseudos.errors && (pseudos.dirty || pseudos.touched)" class="alert alert-danger">
+          <div  [hidden]="!pseudos.errors.required">
+            Ce champs n'est pas rempli !
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Mot de passe:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="mp" placeholder="Entrez votre mot de passe" name="mp" [(ngModel)]="tmpInscription.mp" required>
+        <input type="text" class="form-control" id="mp" placeholder="Entrez votre mot de passe" name="mp" [(ngModel)]="tmpInscription.mp" required #mp="ngModel">
+
+        <div  *ngIf="mp.errors && (mp.dirty || mp.touched)" class="alert alert-danger">
+          <div  [hidden]="!mp.errors.required">
+            Ce champs n'est pas rempli !
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2">Confirmer le mot de passe:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="cmp" placeholder="Confirmer votre mot de passe" name="cmp" [(ngModel)]="tmpInscription.cmp" required>
+        <input type="text" class="form-control" id="cmp" placeholder="Confirmer votre mot de passe" name="cmp" [(ngModel)]="tmpInscription.cmp" required #cmp="ngModel">
+
+        <div  *ngIf="cmp.errors && (cmp.dirty || cmp.touched)" class="alert alert-danger">
+          <div  [hidden]="!cmp.errors.required">
+            Ce champs n'est pas rempli !
+          </div>
+        </div>
+
       </div>
     </div>
 

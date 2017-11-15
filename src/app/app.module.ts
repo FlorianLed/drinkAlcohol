@@ -10,6 +10,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AdminComponent } from './admin/admin.component';
+import {UtilisateurManagerServiceService} from "./utilisateur-manager-service.service";
+import {HttpModule} from "@angular/http";
 
 
 const routes: Routes= [
@@ -35,6 +37,9 @@ const routes: Routes= [
     path: "inscription", component: InscriptionComponent
   },
   {
+    path: "admin", component: AdminComponent
+  },
+  {
     path: "", redirectTo: "/accueil", pathMatch: "full"
   }
 ];
@@ -51,9 +56,10 @@ const routes: Routes= [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpModule
   ],
-  providers: [],
+  providers: [UtilisateurManagerServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

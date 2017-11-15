@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Utilisateur} from "../utilisateur";
+import {UtilisateurManagerServiceService} from "../utilisateur-manager-service.service";
 
 
 @Component({
@@ -9,15 +10,32 @@ import {Utilisateur} from "../utilisateur";
 })
 export class InscriptionComponent implements OnInit {
 
-  public tmpInscription: Utilisateur = new Utilisateur();
+  public tmpInscription: string = "";
+  public u: Utilisateur;
 
-  constructor() { }
+  @Output() private todosChange:EventEmitter<Utilisateur> = new EventEmitter();
+
+  constructor(public utilisateurService: UtilisateurManagerServiceService) { }
 
   ngOnInit() {
+    this.utilisateurService.getAllTodos().subscribe(u => {
+      this.u = Utilisateur.fromJSON(u);
+      this.emitUtilisateur();
+    });
+  }
+  public emitUtilisateur() {
+    this.todosChange.next(this.u);
   }
 
   public creerUtilisateur(){
-    this.tmpInscription = new Utilisateur();
+    const tmpUtilisateur = new Utilisateur(this.tmpInscription);
+    this
+      .utilisateurService
+      .createUtilisateur(tmpUtilisateur)
+      .subscribe(u => tmpUtilisateur.id = Utilisateur.fromJSON(u).id);
+    this.tmpInscription = "";
+    this.emitUtilisateur();
+    //this.tmpInscription = new Utilisateur();
   }
 
 

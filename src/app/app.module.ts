@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes= [
@@ -44,6 +45,7 @@ const routes: Routes= [
     ConnexionComponent,
     AccueilComponent,
     InscriptionComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

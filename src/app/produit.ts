@@ -8,7 +8,7 @@ export class Produit {
   private _pourcentage: number;
 
 
-  constructor(nom: string, prix: number, stock: number, urlImage: string, description: string, pourcentage: number) {
+  constructor(nom: string = '', prix: number = 0, stock: number = 0, urlImage: string = '', description: string = '', pourcentage: number = 0) {
     this._nom = nom;
     this._prix = prix;
     this._stock = stock;

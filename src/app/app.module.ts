@@ -12,6 +12,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { AdminComponent } from './admin/admin.component';
 import {UtilisateurManagerServiceService} from "./utilisateur-manager-service.service";
 import {HttpModule} from "@angular/http";
+import {ProduitManagerService} from "./produit-manager.service";
 
 
 const routes: Routes= [
@@ -59,7 +60,7 @@ const routes: Routes= [
     RouterModule.forRoot(routes),
     HttpModule
   ],
-  providers: [UtilisateurManagerServiceService],
+  providers: [UtilisateurManagerServiceService,ProduitManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

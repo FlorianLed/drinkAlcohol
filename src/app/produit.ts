@@ -1,4 +1,7 @@
+import {current} from "codelyzer/util/syntaxKind";
+
 export class Produit {
+
   private _nom: string;
   private _prix: number;
   private _stock: number;
@@ -6,6 +9,7 @@ export class Produit {
   private _urlImage: string;
   private _description: string;
   private _pourcentage: number;
+  private _id: number;
 
 
   constructor(nom: string = '', prix: number = 0, stock: number = 0, urlImage: string = '', description: string = '', pourcentage: number = 0) {
@@ -104,6 +108,44 @@ export class Produit {
 
   public isRuptureStock(): boolean {
     return this.stock === 0 && this.variationStock === 0;
+  }
+
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
+
+  public static fromJSON (rawProduit:any) : Produit{
+    const tmpProduit = new Produit(rawProduit["nom"]);
+    tmpProduit.id = rawProduit["Id"];
+    tmpProduit.prix = rawProduit["prix"];
+    tmpProduit.stock = rawProduit["stock"];
+    tmpProduit.urlImage = rawProduit["urlImage"];
+    tmpProduit.description = rawProduit["description"];
+    tmpProduit.pourcentage = rawProduit["pourcentage"];
+    return tmpProduit;
+  }
+
+  public static fromJSONs (rawsProduit:any[]) : Produit[]{
+    return rawsProduit.reduce((listeProduit,currentElement) => {
+      listeProduit.push(Produit.fromJSON(currentElement));
+      return listeProduit;
+    }, []);
+  }
+
+  public getCleanDataSending(): any{
+    return {
+      "nom":this.nom,
+      "prix":this.prix,
+      "stock":this.stock,
+      "urlImage":this.urlImage,
+      "description":this.description,
+      "pourcentage":this.pourcentage,
+      "Id":this._id
+    };
   }
 
 

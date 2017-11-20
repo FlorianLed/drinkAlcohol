@@ -16,7 +16,7 @@ export class Utilisateur {
   constructor(nom: string = '' ,prenom: string = '' ,dateNaissance: string = '',ville: string = '',cp: number = 0,rue: string = '',
               num: number = 0 ,gsm: number = 0 ,mail: string = '',pseudos: string = '',mp: string = '',cmp: string = ''){
 
-    this._nom=nom ;
+    this._nom = nom ;
     this._prenom=prenom ;
     this._dateNaissance=dateNaissance ;
     this._ville=ville ;

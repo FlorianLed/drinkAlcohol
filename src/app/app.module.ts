@@ -4,44 +4,44 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-import {RouterModule, Routes} from "@angular/router";
-import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {RouterModule, Routes} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AdminComponent } from './admin/admin.component';
-import {UtilisateurManagerServiceService} from "./utilisateur-manager-service.service";
-import {HttpModule} from "@angular/http";
-import {ProduitManagerService} from "./produit-manager.service";
+import {UtilisateurManagerServiceService} from './utilisateur-manager-service.service';
+import {HttpModule} from '@angular/http';
+import {ProduitManagerService} from './produit-manager.service';
 
 
-const routes: Routes= [
+const routes: Routes = [
   {
-    path: "accueil", component: AccueilComponent
+    path: 'accueil', component: AccueilComponent
   },
   {
-    path: "catégorie", component: AccueilComponent
+    path: 'catégorie', component: AccueilComponent
   },
   {
-    path: "à_propos", component: AccueilComponent
+    path: 'à_propos', component: AccueilComponent
   },
   {
-    path: "mon_panier", component: AccueilComponent
+    path: 'mon_panier', component: AccueilComponent
   },
   {
-    path: "header", component: HeaderComponent
+    path: 'header', component: HeaderComponent
   },
   {
-    path: "connexion", component: ConnexionComponent
+    path: 'connexion', component: ConnexionComponent
   },
   {
-    path: "inscription", component: InscriptionComponent
+    path: 'inscription', component: InscriptionComponent
   },
   {
-    path: "admin", component: AdminComponent
+    path: 'admin', component: AdminComponent
   },
   {
-    path: "", redirectTo: "/accueil", pathMatch: "full"
+    path: '', redirectTo: '/accueil', pathMatch: 'full'
   }
 ];
 @NgModule({
@@ -60,7 +60,7 @@ const routes: Routes= [
     RouterModule.forRoot(routes),
     HttpModule
   ],
-  providers: [UtilisateurManagerServiceService,ProduitManagerService],
+  providers: [UtilisateurManagerServiceService, ProduitManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -35,7 +35,6 @@ export class InscriptionComponent implements OnInit {
       .subscribe(u => tmpUtilisateur.id = Utilisateur.fromJSON(u).id);
     this.tmpInscription = "";
     this.emitUtilisateur();
-    //this.tmpInscription = new Utilisateur();
   }
 
 

@@ -2,12 +2,12 @@
   <form #formulaire="ngForm" (submit)="createProduct()">
     <div class="form-group">
       <div class="row">
-        <input type="text" class="form-control" placeholder="Nom du Produit" name="nom" [(ngModel)]="tmpProduit.nom" required>
-        <input type="number" class="form-control" placeholder="Prix" name="prix" [(ngModel)]="tmpProduit.prix" required>
-        <input type="number" class="form-control" name="stock" placeholder="Stock" [(ngModel)]="tmpProduit.stock"  required>
-        <input type="text" class="form-control" name="url" placeholder="URL image" [(ngModel)]="tmpProduit.urlImage" required>
+        <input type="text" class="form-control" placeholder="Nom du Produit" name="nom" [(ngModel)]="tmpNom" required>
+        <input type="number" class="form-control" placeholder="Prix" name="prix" [(ngModel)]="tmpPrix" required>
+        <input type="number" class="form-control" name="stock" placeholder="Stock" [(ngModel)]="tmpStock"  required>
+        <input type="text" class="form-control" name="url" placeholder="URL image" [(ngModel)]="tmpUrlImage" required>
         <!--<input type="textarea" class="form-control" name="description" placeholder="Description" [(ngModel)]="tmpProduit.description" required>-->
-        <textarea class="form-control" rows="5" name="description" placeholder="Description" [(ngModel)]="tmpProduit.description" required></textarea>
+        <textarea class="form-control" rows="5" name="description" placeholder="Description" [(ngModel)]="tmpDescription" required></textarea>
 
         <button type="submit" class="btn btn-default" [disabled]="!formulaire.form.valid">Valider</button>
       </div>

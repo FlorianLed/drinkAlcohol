@@ -1,4 +1,4 @@
-import {current} from "codelyzer/util/syntaxKind";
+import {current} from 'codelyzer/util/syntaxKind';
 
 export class Produit {
 
@@ -78,31 +78,31 @@ export class Produit {
     this._pourcentage = value;
   }
 
-  public modifierParentVariationStock(value: number){
-    this._variationStock +=value;
+  public modifierParentVariationStock(value: number) {
+    this._variationStock += value;
   }
 
-  public dimVariation(){
+  public dimVariation() {
     this._variationStock--;
   }
 
-  public augmVariation(){
+  public augmVariation() {
     this._variationStock++;
   }
 
-  public misAJourStockAvecVariation(){
+  public misAJourStockAvecVariation() {
     this.stock = this.stockDisponible();
   }
 
-  public stockDisponible() : number{
+  public stockDisponible(): number {
     return this.stock - this._variationStock;
   }
 
-  public isDiponible() : boolean{
+  public isDiponible(): boolean {
     return this.stockDisponible() > 0;
   }
 
-  public isDiminuer() : boolean{
+  public isDiminuer(): boolean {
     return this.variationStock > 0;
   }
 
@@ -118,7 +118,7 @@ export class Produit {
     this._id = value;
   }
 
-  public static fromJSON (rawProduit:any) : Produit{
+  public static fromJSON (rawProduit: any): Produit {
     const tmpProduit = new Produit(rawProduit["nom"]);
     tmpProduit.id = rawProduit["Id"];
     tmpProduit.prix = rawProduit["prix"];
@@ -129,8 +129,8 @@ export class Produit {
     return tmpProduit;
   }
 
-  public static fromJSONs (rawsProduit:any[]) : Produit[]{
-    return rawsProduit.reduce((listeProduit,currentElement) => {
+  public static fromJSONs (rawsProduit: any[]): Produit[] {
+    return rawsProduit.reduce((listeProduit, currentElement) => {
       listeProduit.push(Produit.fromJSON(currentElement));
       return listeProduit;
     }, []);
@@ -138,13 +138,13 @@ export class Produit {
 
   public getCleanDataSending(): any{
     return {
-      "nom":this.nom,
-      "prix":this.prix,
-      "stock":this.stock,
-      "urlImage":this.urlImage,
-      "description":this.description,
-      "pourcentage":this.pourcentage,
-      "Id":this._id
+      "nom": this.nom,
+      "prix": this.prix,
+      "stock": this.stock,
+      "urlImage": this.urlImage,
+      "description": this.description,
+      "pourcentage": this.pourcentage,
+      "Id": this._id
     };
   }
 

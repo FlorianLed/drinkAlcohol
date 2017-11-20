@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Produit} from "../produit";
-import {ProduitManagerService} from "../produit-manager.service";
+import {Produit} from '../produit';
+import {ProduitManagerService} from '../produit-manager.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +9,13 @@ import {ProduitManagerService} from "../produit-manager.service";
 })
 export class AdminComponent implements OnInit {
 
-  public tmpProduit: Produit = new Produit();
+  public tmpNom = '';
+  public tmpPrix: number;
+  public tmpStock: number;
+  public tmpUrlImage = '';
+  public tmpDescription = '';
+  public tmpPourcentage: number;
+
   public listeProduit: Produit[] = [];
 
   @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
@@ -26,29 +32,32 @@ export class AdminComponent implements OnInit {
   }
 
   public createProduct() {
-    this.listeProduit.push(this.tmpProduit);
-    this.tmpProduit = new Produit();
+    const tmpProduit = new Produit(this.tmpNom, this.tmpPrix, this.tmpStock, this.tmpUrlImage, this.tmpDescription, this.tmpPourcentage);
+    this.listeProduit.push(tmpProduit);
     this
       .produitService
-      .createProduit(this.tmpProduit)
-      .subscribe(produit=> this.tmpProduit.id= Produit.fromJSON(produit).id);
-    this.tmpProduit = new Produit();
+      .createProduit(tmpProduit)
+      .subscribe(produit => tmpProduit.id = Produit.fromJSON(produit).id);
+
+    this.tmpNom = '';
+    this.tmpPrix = 0;
+    this.tmpStock = 0;
+    this.tmpUrlImage = '';
+    this.tmpDescription = '';
     this.emitProduits();
-
-
   }
 
-  public updateProduit(produit: Produit){
+  public updateProduit(produit: Produit) {
     this.produitService.updateProduit(produit).subscribe();
   }
 
-  public deleteProduit(index:number){
-    const DELETE_PRODUIT = () => this.listeProduit.splice(index,1);
-    const DISPLAY_ERROR = (error)=> console.error(error);
+  public deleteProduit(index: number) {
+    const DELETE_PRODUIT = () => this.listeProduit.splice(index, 1);
+    const DISPLAY_ERROR = (error) => console.error(error);
     this
       .produitService
       .deleteProduit(this.listeProduit[index].id)
-      .subscribe(DELETE_PRODUIT,DISPLAY_ERROR);
+      .subscribe(DELETE_PRODUIT, DISPLAY_ERROR);
   }
 
   public emitProduits() {

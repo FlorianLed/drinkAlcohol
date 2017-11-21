@@ -51,6 +51,7 @@ export class AdminComponent implements OnInit {
     this.produitService.updateProduit(produit).subscribe();
   }
 
+
   public deleteProduit(index: number) {
     const DELETE_PRODUIT = () => this.listeProduit.splice(index, 1);
     const DISPLAY_ERROR = (error) => console.error(error);

@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Http} from '@angular/http';
 import {Produit} from './produit';
 import {Observable} from 'rxjs/Observable';
-import {HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class ProduitManagerService {
 
-  constructor(public http: Http) { }
+  constructor(public http: HttpClient) { }
 
   public  getAllProduits(): Observable<Produit []> {
-    return this.http.get('http://localhost:65281/api/produit').map(response => response.json());
+    return this.http.get('http://localhost:65281/api/produit');
   }
 
   public updateProduit(produit: Produit): Observable<any> {
@@ -18,16 +17,16 @@ export class ProduitManagerService {
   }
 
   public deleteProduit(id: number): Observable<any> {
-    return this.http.delete('http://localhost:65281/api/produit', {
-      params: new  HttpParams().set('id', id + '').toString()
+    const DISPLAY_ERROR = (error) => console.error(error);
+    return this.http.delete<string>('http://localhost:65281/api/produit', {
+      params: new  HttpParams().set('id', id + '')
     });
   }
 
   public createProduit(produit: Produit): Observable<Produit> {
     return this
       .http
-      .post('http://localhost:65281/api/produit', produit.getCleanDataSending())
-      .map(response => response.json());
+      .post('http://localhost:65281/api/produit', produit.getCleanDataSending());
   }
 
 }

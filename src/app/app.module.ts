@@ -42,8 +42,7 @@ const routes: Routes = [
   },
   {
     path: '', redirectTo: '/accueil', pathMatch: 'full'
-  }
-];
+  }];
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,8 +56,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
-    HttpModule
+    RouterModule.forRoot(routes)
   ],
   providers: [UtilisateurManagerServiceService, ProduitManagerService],
   bootstrap: [AppComponent]

@@ -5,11 +5,11 @@ export class Produit {
   private _nom: string;
   private _prix: number;
   private _stock: number;
-  private _variationStock: number = 0;
+  private _variationStock = 0;
   private _urlImage: string;
   private _description: string;
   private _pourcentage: number;
-  private _id: number;
+  id: number;
 
 
   constructor(nom: string = '', prix: number = 0, stock: number = 0, urlImage: string = '', description: string = '', pourcentage: number = 0) {
@@ -110,41 +110,33 @@ export class Produit {
     return this.stock === 0 && this.variationStock === 0;
   }
 
-  get id(): number {
-    return this._id;
-  }
-
-  set id(value: number) {
-    this._id = value;
-  }
 
   public static fromJSON (rawProduit: any): Produit {
-    const tmpProduit = new Produit(rawProduit["nom"]);
-    tmpProduit.id = rawProduit["Id"];
-    tmpProduit.prix = rawProduit["prix"];
-    tmpProduit.stock = rawProduit["stock"];
-    tmpProduit.urlImage = rawProduit["urlImage"];
-    tmpProduit.description = rawProduit["description"];
-    tmpProduit.pourcentage = rawProduit["pourcentage"];
+    console.log(rawProduit)
+    const tmpProduit = new Produit(rawProduit['Nom']);
+    tmpProduit.id = rawProduit['Id'];
+    tmpProduit.prix = rawProduit['Prix'];
+    tmpProduit.stock = rawProduit['Stock'];
+    tmpProduit.urlImage = rawProduit['UrlImage'];
+    tmpProduit.description = rawProduit['Description'];
+    tmpProduit.pourcentage = rawProduit['Pourcentage'];
     return tmpProduit;
   }
 
   public static fromJSONs (rawsProduit: any[]): Produit[] {
-    return rawsProduit.reduce((listeProduit, currentElement) => {
-      listeProduit.push(Produit.fromJSON(currentElement));
-      return listeProduit;
-    }, []);
+    return rawsProduit.map(Produit.fromJSON);
   }
 
-  public getCleanDataSending(): any{
+  public getCleanDataSending(): any {
+    const DISPLAY_ERROR = (error) => console.error(error);
     return {
-      "nom": this.nom,
-      "prix": this.prix,
-      "stock": this.stock,
-      "urlImage": this.urlImage,
-      "description": this.description,
-      "pourcentage": this.pourcentage,
-      "Id": this._id
+      'Nom': this._nom,
+      'Prix': this._prix,
+      'Stock': this._stock,
+      'UrlImage': this._urlImage,
+      'Description': this._description,
+      'Pourcentage': this._pourcentage,
+      'Id': this.id
     };
   }
 

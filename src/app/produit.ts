@@ -112,7 +112,6 @@ export class Produit {
 
 
   public static fromJSON (rawProduit: any): Produit {
-    console.log(rawProduit)
     const tmpProduit = new Produit(rawProduit['Nom']);
     tmpProduit.id = rawProduit['Id'];
     tmpProduit.prix = rawProduit['Prix'];
@@ -128,7 +127,6 @@ export class Produit {
   }
 
   public getCleanDataSending(): any {
-    const DISPLAY_ERROR = (error) => console.error(error);
     return {
       'Nom': this._nom,
       'Prix': this._prix,

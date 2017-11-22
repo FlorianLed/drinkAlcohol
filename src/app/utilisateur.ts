@@ -11,23 +11,21 @@ export class Utilisateur {
   private _mail: string;
   private _pseudos: string;
   private _mp: string;
-  private _cmp: string;
 
-  constructor(nom: string = '' ,prenom: string = '' ,dateNaissance: string = '',ville: string = '',cp: number = 0,rue: string = '',
-              num: number = 0 ,gsm: number = 0 ,mail: string = '',pseudos: string = '',mp: string = '',cmp: string = ''){
+  constructor(nom: string = '', prenom: string = '', dateNaissance: string = '', ville: string = '', cp: number = 0, rue: string = '',
+              num: number = 0 , gsm: number = 0, mail: string = '', pseudos: string = '', mp: string = '') {
 
     this._nom = nom ;
-    this._prenom=prenom ;
-    this._dateNaissance=dateNaissance ;
-    this._ville=ville ;
-    this._cp=cp ;
-    this._rue=rue ;
-    this._num=num ;
-    this._gsm=gsm ;
-    this._mail=mail ;
-    this._pseudos=pseudos ;
-    this._mp=mp ;
-    this._cmp=cmp ;
+    this._prenom = prenom ;
+    this._dateNaissance = dateNaissance ;
+    this._ville = ville ;
+    this._cp = cp ;
+    this._rue = rue ;
+    this._num = num ;
+    this._gsm = gsm ;
+    this._mail = mail ;
+    this._pseudos = pseudos ;
+    this._mp = mp ;
   }
 
   get id(): number {
@@ -38,13 +36,6 @@ export class Utilisateur {
     this._id = value;
   }
 
-  get cmp(): string {
-    return this._cmp;
-  }
-
-  set cmp(value: string) {
-    this._cmp = value;
-  }
   get mp(): string {
     return this._mp;
   }
@@ -123,38 +114,40 @@ export class Utilisateur {
     this._nom = value;
   }
 
-  public static fromJSON (rawTodo:any) : Utilisateur{
-    const tmpUtilisateur = new Utilisateur(rawTodo["Nom"]);
-    tmpUtilisateur.id = rawTodo["Id"];
-    tmpUtilisateur.prenom = rawTodo["Prenom"];
-    tmpUtilisateur.dateNaissance = rawTodo["DateNaissance"];
-    tmpUtilisateur.cp = rawTodo["CodePostal"];
-    tmpUtilisateur.ville = rawTodo["Ville"];
-    tmpUtilisateur.rue = rawTodo["Rue"];
-    tmpUtilisateur.num = rawTodo["Numero"];
-    tmpUtilisateur.gsm = rawTodo["Gsm"];
-    tmpUtilisateur.mail = rawTodo["Email"];
-    tmpUtilisateur.pseudos = rawTodo["Pseudo"];
-    tmpUtilisateur.mp = rawTodo["MDP"];
+  public static fromJSON (rawTodo: any): Utilisateur {
+    const tmpUtilisateur = new Utilisateur(rawTodo['Nom']);
+    tmpUtilisateur.id = rawTodo['Id'];
+    tmpUtilisateur.prenom = rawTodo['Prenom'];
+    tmpUtilisateur.dateNaissance = rawTodo['DateNaissance'];
+    tmpUtilisateur.cp = rawTodo['CodePostal'];
+    tmpUtilisateur.ville = rawTodo['Ville'];
+    tmpUtilisateur.rue = rawTodo['Rue'];
+    tmpUtilisateur.num = rawTodo['Numero'];
+    tmpUtilisateur.gsm = rawTodo['Gsm'];
+    tmpUtilisateur.mail = rawTodo['Email'];
+    tmpUtilisateur.pseudos = rawTodo['Pseudo'];
+    tmpUtilisateur.mp = rawTodo['MDP'];
     return tmpUtilisateur;
   }
 
+  public static fromJSONs (rawsProduit: any[]): Utilisateur[] {
+    return rawsProduit.map(Utilisateur.fromJSON);
+  }
 
-
-  public getCleanDataForSending() : any{
+  public getCleanDataForSending(): any {
     return {
-      "MDP":this.mp,
-      "Pseudo":this.pseudos,
-      "Email":this.mail,
-      "Gsm":this.gsm,
-      "Numero":this.num,
-      "Rue":this.rue,
-      "Ville":this.ville,
-      "CodePostal":this.cp,
-      "DateNaissance":this.dateNaissance,
-      "Prenom":this.prenom,
-      "Nom":this.nom,
-      "Id": this._id
+      'MDP': this.mp,
+      'Pseudo': this.pseudos,
+      'Email': this.mail,
+      'Gsm': this.gsm,
+      'Numero': this.num,
+      'Rue': this.rue,
+      'Ville': this.ville,
+      'CodePostal': this.cp,
+      'DateNaissance': this.dateNaissance,
+      'Prenom': this.prenom,
+      'Nom': this.nom,
+      'Id': this._id
     };
   }
 

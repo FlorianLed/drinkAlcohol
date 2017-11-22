@@ -10,9 +10,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AdminComponent } from './admin/admin.component';
-import {UtilisateurManagerServiceService} from './utilisateur-manager-service.service';
-import {HttpModule} from '@angular/http';
 import {ProduitManagerService} from './produit-manager.service';
+import { AdminGestionUtilisateurComponent } from './admin-gestion-utilisateur/admin-gestion-utilisateur.component';
+import {UtilisateurManagerService} from './utilisateur-manager.service';
 
 
 const routes: Routes = [
@@ -50,7 +50,8 @@ const routes: Routes = [
     ConnexionComponent,
     AccueilComponent,
     InscriptionComponent,
-    AdminComponent
+    AdminComponent,
+    AdminGestionUtilisateurComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +59,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [UtilisateurManagerServiceService, ProduitManagerService],
+  providers: [UtilisateurManagerService, ProduitManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

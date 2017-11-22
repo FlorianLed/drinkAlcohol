@@ -17,7 +17,6 @@ export class ProduitManagerService {
   }
 
   public deleteProduit(id: number): Observable<any> {
-    const DISPLAY_ERROR = (error) => console.error(error);
     return this.http.delete<string>('http://localhost:65281/api/produit', {
       params: new  HttpParams().set('id', id + '')
     });

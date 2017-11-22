@@ -41,7 +41,7 @@ export class InscriptionComponent implements OnInit {
       });
   }
 
-  public createUtilisateur() {
+  public creerUtilisateur() {
     const tmpUtilisateur = new Utilisateur(this.tmpNom, this.tmpPrenom, this.tmpDateNaiss, this.tmpVille, this.tmpCp, this.tmpRue, this.tmpNum, this.tmpGsm, this.tmpMail, this.tmpPseudo, this.tmpMp);
     this.listeUtilisateurs.push(tmpUtilisateur);
     this

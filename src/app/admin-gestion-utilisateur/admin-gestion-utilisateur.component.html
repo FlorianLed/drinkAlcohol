@@ -1,38 +1,36 @@
 <div class="container">
-  <div class="row" *ngFor="let utilisateur of listeUtilisateurs; index as i;">
-    <h2>Striped Rows</h2>
-    <p>The .table-striped class adds zebra-stripes to a table:</p>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Date de naissance</th>
-        <th>Code postal</th>
-        <th>Ville</th>
-        <th>Rue</th>
-        <th>Numéro</th>
-        <th>Gsm</th>
-        <th>Email</th>
-        <th>Pseudo</th>
-        <th>Mot de passe</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>{{utilisateur.prenom}}</td>
-        <td>{{utilisateur.nom}}</td>
-        <td>{{utilisateur.dateNaissance}}</td>
-        <td>{{utilisateur.cp}}</td>
-        <td>{{utilisateur.ville}}</td>
-        <td>{{utilisateur.rue}}</td>
-        <td>{{utilisateur.num}}</td>
-        <td>{{utilisateur.gsm}}</td>
-        <td>{{utilisateur.mail}}</td>
-        <td>{{utilisateur.pseudos}}</td>
-        <td>{{utilisateur.mp}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-hover">
+    <div class="row" *ngFor="let utilisateur of listeUtilisateurs; index as i;">
+    <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Date de naissance</th>
+      <th>Code postal</th>
+      <th>Ville</th>
+      <th>Rue</th>
+      <th>Numéro</th>
+      <th>Gsm</th>
+      <th>Email</th>
+      <th>Pseudo</th>
+      <th>Mot de passe</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{utilisateur.prenom}}</td>
+      <td>{{utilisateur.nom}}</td>
+      <td>{{utilisateur.dateNaissance}}</td>
+      <td>{{utilisateur.cp}}</td>
+      <td>{{utilisateur.ville}}</td>
+      <td>{{utilisateur.rue}}</td>
+      <td>{{utilisateur.num}}</td>
+      <td>{{utilisateur.gsm}}</td>
+      <td>{{utilisateur.mail}}</td>
+      <td>{{utilisateur.pseudos}}</td>
+      <td>{{utilisateur.mp}}</td>
+    </tr>
+    </tbody>
+    </div>
+  </table>
 </div>

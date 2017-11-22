@@ -10,8 +10,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AdminComponent } from './admin-gestion-produit/admin.component';
-import {UtilisateurManagerServiceService} from './utilisateur-manager-service.service';
-import {HttpModule} from '@angular/http';
 import {ProduitManagerService} from './produit-manager.service';
 import { AdminGestionUtilisateurComponent } from './admin-gestion-utilisateur/admin-gestion-utilisateur.component';
 import {UtilisateurManagerService} from './utilisateur-manager.service';
@@ -45,6 +43,9 @@ const routes: Routes = [
   },
   {
     path: 'admin-page-principal', component: AdminPagePrincipalComponent
+  },
+  {
+    path: 'admin-gestion-utilisateur', component: AdminGestionUtilisateurComponent
   },
   {
     path: '', redirectTo: '/accueil', pathMatch: 'full'

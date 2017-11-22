@@ -23,16 +23,16 @@ export class AdminGestionUtilisateurComponent implements OnInit {
 
   public listeUtilisateurs: Utilisateur[] = [];
 
-  @Output() public lsiteUtilisateurChange: EventEmitter<Utilisateur []> = new EventEmitter();
+  @Output() public listeUtilisateurChange: EventEmitter<Utilisateur []> = new EventEmitter();
 
   constructor(public utilisateurService: UtilisateurManagerService) { }
 
   ngOnInit() {
     this.utilisateurService
       .getAllUtilisateurs()
-      .subscribe(produits => {
-        this.listeUtilisateurs = Utilisateur.fromJSONs(produits);
-        this.emitProduits();
+      .subscribe(utilisateurs => {
+        this.listeUtilisateurs = Utilisateur.fromJSONs(utilisateurs);
+        this.emitUtilisateurs();
       });
   }
 
@@ -55,7 +55,7 @@ export class AdminGestionUtilisateurComponent implements OnInit {
     this.tmpMail = '';
     this.tmpPseudo = '';
     this.tmpMp = '';
-    this.emitProduits();
+    this.emitUtilisateurs();
   }
 
   public updateUtilisateur(utilisateur: Utilisateur) {
@@ -72,8 +72,8 @@ export class AdminGestionUtilisateurComponent implements OnInit {
       .subscribe(DELETE_UTILISATEUR, DISPLAY_ERROR);
   }
 
-  public emitProduits() {
-    this.lsiteUtilisateurChange.next(this.listeUtilisateurs);
+  public emitUtilisateurs() {
+    this.listeUtilisateurChange.next(this.listeUtilisateurs);
   }
 
 }

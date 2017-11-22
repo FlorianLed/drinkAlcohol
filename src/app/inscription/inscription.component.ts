@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Utilisateur} from "../utilisateur";
-import {UtilisateurManagerServiceService} from "../utilisateur-manager-service.service";
+import {Utilisateur} from '../utilisateur';
+import {UtilisateurManagerService} from '../utilisateur-manager.service';
 
 
 @Component({
@@ -10,31 +10,61 @@ import {UtilisateurManagerServiceService} from "../utilisateur-manager-service.s
 })
 export class InscriptionComponent implements OnInit {
 
-  public tmpInscription: string = "";
+  public tmpNom = '';
+  public tmpPrenom = '';
+  public tmpDateNaiss = '';
+  public tmpVille = '';
+  public tmpCp: number;
+  public tmpRue = '';
+  public tmpNum: number;
+  public tmpGsm: number;
+  public tmpMail = '';
+  public tmpPseudo = '';
+  public tmpMp = '';
+
+  public listeUtilisateurs: Utilisateur[] = [];
+
+  @Output() public listeUtilisateurChange: EventEmitter<Utilisateur []> = new EventEmitter();
+
   public u: Utilisateur;
 
-  @Output() private todosChange:EventEmitter<Utilisateur> = new EventEmitter();
+  @Output() private todosChange: EventEmitter<Utilisateur> = new EventEmitter();
 
-  constructor(public utilisateurService: UtilisateurManagerServiceService) { }
+  constructor(public utilisateurService: UtilisateurManagerService) { }
 
   ngOnInit() {
-    this.utilisateurService.getAllTodos().subscribe(u => {
-      this.u = Utilisateur.fromJSON(u);
-      this.emitUtilisateur();
-    });
-  }
-  public emitUtilisateur() {
-    this.todosChange.next(this.u);
+    this.utilisateurService
+      .getAllUtilisateurs()
+      .subscribe(utilisateurs => {
+        this.listeUtilisateurs = Utilisateur.fromJSONs(utilisateurs);
+        this.emitUtilisateurs();
+      });
   }
 
-  public creerUtilisateur(){
-    const tmpUtilisateur = new Utilisateur(this.tmpInscription);
+  public createUtilisateur() {
+    const tmpUtilisateur = new Utilisateur(this.tmpNom, this.tmpPrenom, this.tmpDateNaiss, this.tmpVille, this.tmpCp, this.tmpRue, this.tmpNum, this.tmpGsm, this.tmpMail, this.tmpPseudo, this.tmpMp);
+    this.listeUtilisateurs.push(tmpUtilisateur);
     this
       .utilisateurService
       .createUtilisateur(tmpUtilisateur)
-      .subscribe(u => tmpUtilisateur.id = Utilisateur.fromJSON(u).id);
-    this.tmpInscription = "";
-    this.emitUtilisateur();
+      .subscribe(utilisateur => tmpUtilisateur.id = Utilisateur.fromJSON(utilisateur).id);
+
+    this.tmpNom = '';
+    this.tmpPrenom = '';
+    this.tmpDateNaiss = '';
+    this.tmpVille = '';
+    this.tmpCp = 0;
+    this.tmpRue = '';
+    this.tmpNum = 0;
+    this.tmpGsm = 0;
+    this.tmpMail = '';
+    this.tmpPseudo = '';
+    this.tmpMp = '';
+    this.emitUtilisateurs();
+  }
+
+  public emitUtilisateurs() {
+    this.listeUtilisateurChange.next(this.listeUtilisateurs);
   }
 
 

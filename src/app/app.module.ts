@@ -9,10 +9,13 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './admin-gestion-produit/admin.component';
+import {UtilisateurManagerServiceService} from './utilisateur-manager-service.service';
+import {HttpModule} from '@angular/http';
 import {ProduitManagerService} from './produit-manager.service';
 import { AdminGestionUtilisateurComponent } from './admin-gestion-utilisateur/admin-gestion-utilisateur.component';
 import {UtilisateurManagerService} from './utilisateur-manager.service';
+import { AdminPagePrincipalComponent } from './admin-page-principal/admin-page-principal.component';
 
 
 const routes: Routes = [
@@ -38,7 +41,10 @@ const routes: Routes = [
     path: 'inscription', component: InscriptionComponent
   },
   {
-    path: 'admin', component: AdminComponent
+    path: 'admin-gestion-produit', component: AdminComponent
+  },
+  {
+    path: 'admin-page-principal', component: AdminPagePrincipalComponent
   },
   {
     path: '', redirectTo: '/accueil', pathMatch: 'full'
@@ -51,7 +57,8 @@ const routes: Routes = [
     AccueilComponent,
     InscriptionComponent,
     AdminComponent,
-    AdminGestionUtilisateurComponent
+    AdminGestionUtilisateurComponent,
+    AdminPagePrincipalComponent
   ],
   imports: [
     BrowserModule,

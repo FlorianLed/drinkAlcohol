@@ -44,6 +44,7 @@ export class AdminComponent implements OnInit {
     this.tmpStock = 0;
     this.tmpUrlImage = '';
     this.tmpDescription = '';
+    this.tmpPourcentage = 0;
     this.emitProduits();
   }
 

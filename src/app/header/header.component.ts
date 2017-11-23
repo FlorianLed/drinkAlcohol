@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Produit} from "../produit";
+import {ProduitManagerService} from "../produit-manager.service";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public listeProduit: Produit[] = [];
+
+  @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
+
+  constructor(public produitService: ProduitManagerService) { }
 
   ngOnInit() {
+    this.produitService
+      .getAllProduits()
+      .subscribe(produits => {
+        this.listeProduit = Produit.fromJSONs(produits);
+        this.emitProduits();
+      });
+  }
+
+  public emitProduits() {
+    this.lsiteProduitChange.next(this.listeProduit);
   }
 
 }

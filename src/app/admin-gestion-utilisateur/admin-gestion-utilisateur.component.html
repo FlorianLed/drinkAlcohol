@@ -1,7 +1,10 @@
+<input type="text" [formControl]="inputForSearchingUsers">
+
 <div class="container">
   <table class="table table-hover">
     <thead>
     <tr>
+      <th></th>
       <th>Prénom</th>
       <th>Nom</th>
       <th>Date de naissance</th>
@@ -17,18 +20,20 @@
     </thead>
     <tbody>
     <tr *ngFor="let utilisateur of listeUtilisateurs; index as i;">
-      <td>{{utilisateur.prenom}}</td>
-      <td>{{utilisateur.nom}}</td>
-      <td>{{utilisateur.dateNaissance}}</td>
-      <td>{{utilisateur.cp}}</td>
-      <td>{{utilisateur.ville}}</td>
-      <td>{{utilisateur.rue}}</td>
-      <td>{{utilisateur.num}}</td>
-      <td>{{utilisateur.gsm}}</td>
-      <td>{{utilisateur.mail}}</td>
-      <td>{{utilisateur.pseudos}}</td>
-      <td>{{utilisateur.mp}}</td>
+      <td> <span class="glyphicon glyphicon-remove" (click)="deleteUtilisateur(i)"></span> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.prenom" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.nom" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.dateNaissance" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.cp" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.ville" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.rue" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.num" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.gsm" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.mail" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.pseudos" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.mp" (blur)="updateUtilisateur(utilisateur)"> </td>
     </tr>
     </tbody>
   </table>
 </div>
+

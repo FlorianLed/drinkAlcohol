@@ -1,6 +1,12 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {Utilisateur} from '../utilisateur';
 import {UtilisateurManagerService} from '../utilisateur-manager.service';
+import {FormControl} from '@angular/forms';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-admin-gestion-utilisateur',
@@ -25,7 +31,11 @@ export class AdminGestionUtilisateurComponent implements OnInit {
 
   @Output() public listeUtilisateurChange: EventEmitter<Utilisateur []> = new EventEmitter();
 
-  constructor(public utilisateurService: UtilisateurManagerService) { }
+  private url = 'http://localhost:65281/api/utilisateur';
+
+  public inputForSearchingUsers = new FormControl();
+
+  constructor(public utilisateurService: UtilisateurManagerService, public http: HttpClient) { }
 
   ngOnInit() {
     this.utilisateurService
@@ -34,6 +44,16 @@ export class AdminGestionUtilisateurComponent implements OnInit {
         this.listeUtilisateurs = Utilisateur.fromJSONs(utilisateurs);
         this.emitUtilisateurs();
       });
+
+    this.inputForSearchingUsers
+      .valueChanges
+      .filter(text => text.length >= 3)
+      .debounceTime(800)
+      .distinctUntilChanged()
+      .switchMap(text => this.http.get<any[]>(this.url, {
+        params: new HttpParams().set('q', text)
+      }))
+      .subscribe(listeUtilisateurs => this.listeUtilisateurs = listeUtilisateurs);
   }
 
   public createUtilisateur() {
@@ -74,6 +94,10 @@ export class AdminGestionUtilisateurComponent implements OnInit {
 
   public emitUtilisateurs() {
     this.listeUtilisateurChange.next(this.listeUtilisateurs);
+  }
+
+  ngOnDestroy() {
+
   }
 
 }

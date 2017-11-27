@@ -1,33 +1,31 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Produit} from "../produit";
 import {ProduitManagerService} from "../produit-manager.service";
-import {FormControl} from "@angular/forms";
-import {HttpParams} from "@angular/common/http";
 import {OrderProduit} from "../order-produit";
-import {Order} from "../order";
-import {isNumber} from "util";
+
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
+
 })
-export class HeaderComponent implements OnInit, OnChanges {
+export class HeaderComponent implements OnInit {
+
+
 
 
   public listeProduit: Produit[] = [];
   public ListeAuPanier: Produit[] = [];
   public prod: Produit;
 
+  public typeFilterTodo:number = 0;
+
 
   @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
 
   @Output() public orderProductChange : EventEmitter <OrderProduit> = new EventEmitter();
-  @Input() public currentOrderInjected : OrderProduit;
-  @Output() public orderValidated:EventEmitter<Order> = new EventEmitter();
-
-  public currentOrder:Order = new Order();
-
 
   constructor(public produitService: ProduitManagerService) { }
 
@@ -40,27 +38,20 @@ export class HeaderComponent implements OnInit, OnChanges {
       });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const tmpOrderProduct:OrderProduit = changes["currentOrderInjected"].currentValue;
-
-    if (tmpOrderProduct) {
-      this.currentOrder.addOrChangeQuantityProduct(tmpOrderProduct.product, tmpOrderProduct.quantity);
-    }
-  }
 
   public emitProduits() {
     this.lsiteProduitChange.next(this.listeProduit);
   }
 
-  public recherche(recherche: string) {
-    this.ListeAuPanier = [];
+  /*public recherche(recherche: string) {
+    this.listeRecherche = [];
     for(let i = 0;i< this.listeProduit.length;i++){
       const pos = this.listeProduit[i].nom.toLowerCase().search(recherche.toLowerCase());
       if(pos>=0){
-        this.ListeAuPanier.push(this.listeProduit[i]);
+        this.listeRecherche.push(this.listeProduit[i]);
       }
     }
-  }
+  }*/
 
   public AjoutPanier(id: number){
     this.produitService
@@ -84,14 +75,9 @@ export class HeaderComponent implements OnInit, OnChanges {
     this.emitOrderProduct(product,false);
   }
 
-  public emitAndResetOrder() {
-    this.emitOrderValidated();
-    this.currentOrder = new Order();
-  }
 
-  public emitOrderValidated() {
-    this.orderValidated.next(this.currentOrder);
-  }
+
+
 
 
 

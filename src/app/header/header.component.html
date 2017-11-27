@@ -12,8 +12,8 @@
     </ul>
     <form class="navbar-form navbar-left" >
       <div class="form-group" >
-        <input type="text" class="form-control"  name="motcle" placeholder="Mot clé">
-        <button type="submit" class="btn btn-default" (click)="recherche(prod.nom)">Rechercher</button>
+        <input type="text" class="form-control"  name="motcle" placeholder="Mot clé" [(ngModel)]="tmpcle">
+        <button type="submit" class="btn btn-default">Rechercher</button>
       </div>
     </form>
     <ul class="nav navbar-nav">
@@ -25,6 +25,8 @@
   </div>
 </nav>
 
+
+
 <!--<div class="logo"><img src="http://www.novemberfire.com/shirtspopup/NFTpop137.gif"/></div>-->
 <div class="container">
 
@@ -33,14 +35,15 @@
     <div class="logo"><img src="http://www.novemberfire.com/shirtspopup/NFTpop137.gif"/></div>
   </div>
 
-
-  <form >
+  <input type="radio" name="typeFilterTodo" [value]="0" [(ngModel)]="typeFilterTodo"> Tous les alcools
+  <input type="radio" name="typeFilterTodo" [value]="1" [(ngModel)]="typeFilterTodo"> >15€
+  <input type="radio" name="typeFilterTodo" [value]="2" [(ngModel)]="typeFilterTodo"> <15€
 
     <div class="row">
       <div class="col">
         <div class="row">
-          <div *ngFor="let produit of listeProduit;">
-            <article class="col-md-4 col-lg-offset-1" >
+          <div *ngFor="let produit of listeProduit | filterPrix:typeFilterTodo" >
+            <article class="col-md-4 col-lg-offset-1">
               <div id="products" class="row list-group">
                 <div class="item  col-xs-4 col-lg-12">
                   <div class="thumbnail">
@@ -54,7 +57,7 @@
                       </p>
                       <div class="row">
                         <div class="col-xs-12 col-md-6">
-                          <p class="lead">
+                          <p class="lead" >
                             {{produit.prix}}€</p>
                         </div>
                         <div class="col-xs-12 col-md-6">
@@ -71,7 +74,7 @@
       </div>
     </div>
 
-  </form>
+
 
   <table class="table table-striped">
     <thead>
@@ -88,16 +91,12 @@
           <input type="button" value="+" (click)="incrementQuantityOfProduct(produit)">
           <input type="button" value="-" (click)="decrementQuantityOfProduct(produit)">
         </td>
+        {{ListeAuPanier|json}}
       </tr>
     </tbody>
   </table>
 
-  <h2>Commande actuelle</h2>
-  <ul>
-    <li *ngFor="let orderProduct of currentOrder.orderProducts;">
-      {{orderProduct.product.nom}} {{orderProduct.quantity}}
-    </li>
-  </ul>
+
 
 </div>
 

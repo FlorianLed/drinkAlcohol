@@ -12,6 +12,10 @@ export class ProduitManagerService {
     return this.http.get('http://localhost:65281/api/produit');
   }
 
+  public getProduit(id: number): Observable<Produit>{
+    return this.http.get('http://localhost:65281/api/produit/'+id);
+  }
+
   public updateProduit(produit: Produit): Observable<any> {
     return this.http.put('http://localhost:65281/api/produit', produit.getCleanDataSending());
   }

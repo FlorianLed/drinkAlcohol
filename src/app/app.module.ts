@@ -14,6 +14,7 @@ import {ProduitManagerService} from './produit-manager.service';
 import { AdminGestionUtilisateurComponent } from './admin-gestion-utilisateur/admin-gestion-utilisateur.component';
 import {UtilisateurManagerService} from './utilisateur-manager.service';
 import { AdminPagePrincipalComponent } from './admin-page-principal/admin-page-principal.component';
+import { PanierComponent } from './panier/panier.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,9 @@ const routes: Routes = [
     path: 'admin-gestion-utilisateur', component: AdminGestionUtilisateurComponent
   },
   {
+    path: 'panier', component: PanierComponent
+  },
+  {
     path: '', redirectTo: '/accueil', pathMatch: 'full'
   }];
 @NgModule({
@@ -59,7 +63,8 @@ const routes: Routes = [
     InscriptionComponent,
     AdminComponent,
     AdminGestionUtilisateurComponent,
-    AdminPagePrincipalComponent
+    AdminPagePrincipalComponent,
+    PanierComponent
   ],
   imports: [
     BrowserModule,

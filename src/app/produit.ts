@@ -110,6 +110,10 @@ export class Produit {
     return this.stock === 0 && this.variationStock === 0;
   }
 
+  public editRelativeVariationStock(value: number) {
+    this.variationStock += value;
+  }
+
 
   public static fromJSON (rawProduit: any): Produit {
     const tmpProduit = new Produit(rawProduit['Nom']);

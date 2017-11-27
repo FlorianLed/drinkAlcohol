@@ -1,0 +1,14 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Prix</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let produit of ll();">
+    <td>{{produit.nom}}</td>
+    <td>{{produit.prix}}€</td>
+  </tr>
+  </tbody>
+</table>

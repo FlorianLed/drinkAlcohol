@@ -10,7 +10,7 @@ export class FilterPrixPipe implements PipeTransform {
   private static readonly DONE:number = 1;
   private static readonly NOT_DONE:number = 2;
 
-  transform(value: Produit[], filterWanted?): Produit[] {
+  transform(value: Produit[], filterWanted=0): Produit[] {
     if (filterWanted == FilterPrixPipe.ALL)
       return value;
 

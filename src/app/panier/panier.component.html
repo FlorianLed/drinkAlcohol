@@ -3,12 +3,17 @@
   <tr>
     <th>Nom</th>
     <th>Prix</th>
+    <th>Qunatité</th>
   </tr>
   </thead>
-  <tbody>
-  <tr *ngFor="let produit of ll();">
+  <tbody *ngFor="let produit of ListeAuPanier;index as i;">
+  <tr >
     <td>{{produit.nom}}</td>
     <td>{{produit.prix}}€</td>
+    <td><input type="number" class="form-control" placeholder="Quantité de Stock" name="quantite" [(ngModel)]="quantite[i]" min="0" [max]="produit.stock" required></td>
   </tr>
   </tbody>
+
 </table>
+<p>{{totalAllOrder()}}€</p>
+<button type="submit" class="btn btn-default" (click)="totalAllOrder()" >Valider la commande</button>

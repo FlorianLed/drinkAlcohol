@@ -18,7 +18,9 @@ export class AdminComponent implements OnInit {
 
   public listeProduit: Produit[] = [];
 
+
   @Output() public listeProduitChange: EventEmitter<Produit []> = new EventEmitter();
+
 
   constructor(public produitService: ProduitManagerService) { }
 
@@ -29,7 +31,10 @@ export class AdminComponent implements OnInit {
         this.listeProduit = Produit.fromJSONs(produits);
         this.emitProduits();
       });
+
   }
+
+
 
   public createProduct() {
     const tmpProduit = new Produit(this.tmpNom, this.tmpPrix, this.tmpStock, this.tmpUrlImage, this.tmpDescription, this.tmpPourcentage);
@@ -65,5 +70,7 @@ export class AdminComponent implements OnInit {
   public emitProduits() {
     this.listeProduitChange.next(this.listeProduit);
   }
+
+
 
 }

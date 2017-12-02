@@ -6,8 +6,6 @@
         <input type="number" class="form-control" placeholder="Prix" name="prix" [(ngModel)]="tmpPrix" required>
         <input type="number" class="form-control" name="stock" placeholder="Stock" [(ngModel)]="tmpStock"  required>
         <input type="text" class="form-control" name="url" placeholder="URL image" [(ngModel)]="tmpUrlImage" required>
-        <!--<input type="textarea" class="form-control" name="description" placeholder="Description" [(ngModel)]="tmpProduit.description" required>-->
-       <!-- <textarea class="form-control" rows="5" name="description" placeholder="Description" [(ngModel)]="tmpDescription" required></textarea>-->
         <textarea class="form-control" rows="5" name="description" placeholder="Description" [(ngModel)]="tmpDescription" required></textarea>
         <input type="text" class="form-control" name="pourcentage" placeholder="Pourcentage" [(ngModel)]="tmpPourcentage" required>
 
@@ -18,45 +16,26 @@
   </form>
 </div>
 
-<!--<div class="container">
-  <table class="table table-bordered" style="width:100%">
-    <thead>
-    <tr>
-      <th class="col-sm-3">Nom du produit</th>
-      <th class="col-sm-3">Image</th>
-      <th class="col-sm-3">Prix</th>
-      <th class="col-sm-3">Stock</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let produit of listeProduit; index as i;">
-        <td class="col-sm-3" class="container-fluid bg-3 text-center">{{produit.nom}}</td>
-        <td class="col-sm-3" height="20px"><img [src]=" produit.urlImage" class="img-responsive" alt="Image"/></td>
-        <td class="col-sm-3"><input type="text" class="form-control" [(ngModel)]="produit.prix" (blur)="updateProduit(produit)"></td>
-        <td class="col-sm-3">{{produit.stock}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>-->
+<br>
 
-<div class="container">
-  <div class="row" *ngFor="let produit of listeProduit; index as i;">
-    <span class="glyphicon glyphicon-remove" (click)="deleteProduit(i)"></span>
-    <div class="col-md-8">
-      <div class="media">
-        <div class="media-left">
-          <img class="media-object" [src]="produit.urlImage" height="304" width="304">
+<div class="container w3-container">
+  <div class="row itemsBlock">
+    <div *ngFor="let produit of listeProduit; index as i;" class="col-md-2">
+      <div class="w3-card" style="width:90%">
+        <img [src]="produit.urlImage" alt="Person" style="width:100%">
+        <div class="w3-container">
+          <br>
+          <h6><input type="text"  class="form-control" [(ngModel)]="produit.nom" (blur)="updateProduit(produit)"></h6>
+          <h6>Prix : <input type="text"  class="form-control" [(ngModel)]="produit.prix" (blur)="updateProduit(produit)"></h6>
+          <h6>Stock : <input type="text"  class="form-control" [(ngModel)]="produit.stock" (blur)="updateProduit(produit)"></h6>
+          <h6>Pourcentage : <input type="text"  class="form-control" [(ngModel)]="produit.pourcentage" (blur)="updateProduit(produit)"></h6>
+          <button class="btn btn-success" (click)="deleteProduit(i)">Supprimer</button>
         </div>
-        <div class="media-body">
-          <h4 class="media-heading">{{produit.nom}}</h4>
-          <p>{{produit.description}}</p>
-          <p><input type="text"  class="form-control" [(ngModel)]="produit.prix" (blur)="updateProduit(produit)" width="4"></p>
-          <p><input type="text"  class="form-control" [(ngModel)]="produit.stock" (blur)="updateProduit(produit)" width="4"></p>
-          <p><input type="text"  class="form-control" [(ngModel)]="produit.pourcentage" (blur)="updateProduit(produit)" width="4"></p>
-
-        </div>
+        <br>
       </div>
+      <br>
     </div>
-    <br>
   </div>
 </div>
+<br>
+

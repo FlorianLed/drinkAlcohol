@@ -1,35 +1,30 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Produit} from "../produit";
 import {ProduitManagerService} from "../produit-manager.service";
-import {FormControl} from "@angular/forms";
-import {HttpParams} from "@angular/common/http";
-import {OrderProduit} from "../order-produit";
-import {Order} from "../order";
-import {isNumber} from "util";
+import {PanierService} from "../panier.service";
+import {FilterPipe} from "../filter.pipe";
+
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+
 })
-export class HeaderComponent implements OnInit, OnChanges {
+export class HeaderComponent implements OnInit {
 
 
   public listeProduit: Produit[] = [];
   public ListeAuPanier: Produit[] = [];
-  public prod: Produit;
+  public typeFilterTodo:number = 0;
+  public term;
 
 
   @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
 
-  @Output() public orderProductChange : EventEmitter <OrderProduit> = new EventEmitter();
-  @Input() public currentOrderInjected : OrderProduit;
-  @Output() public orderValidated:EventEmitter<Order> = new EventEmitter();
 
-  public currentOrder:Order = new Order();
-
-
-  constructor(public produitService: ProduitManagerService) { }
+  constructor(public produitService: ProduitManagerService,public panierService: PanierService) { }
 
   ngOnInit() {
     this.produitService
@@ -40,59 +35,34 @@ export class HeaderComponent implements OnInit, OnChanges {
       });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const tmpOrderProduct:OrderProduit = changes["currentOrderInjected"].currentValue;
-
-    if (tmpOrderProduct) {
-      this.currentOrder.addOrChangeQuantityProduct(tmpOrderProduct.product, tmpOrderProduct.quantity);
-    }
-  }
 
   public emitProduits() {
     this.lsiteProduitChange.next(this.listeProduit);
   }
 
   public recherche(recherche: string) {
-    this.ListeAuPanier = [];
+    this.listeProduit = [];
     for(let i = 0;i< this.listeProduit.length;i++){
       const pos = this.listeProduit[i].nom.toLowerCase().search(recherche.toLowerCase());
       if(pos>=0){
-        this.ListeAuPanier.push(this.listeProduit[i]);
+        this.listeProduit.push(this.listeProduit[i]);
       }
     }
   }
+  private  _id:number;
 
-  public AjoutPanier(id: number){
-    this.produitService
-      .getProduit(id)
-      .subscribe(produit => {
-        this.prod = Produit.fromJSON(produit);
-        this.ListeAuPanier.push(this.prod);
-      });
+   get id(): number {
+    return this._id;
   }
 
-  private emitOrderProduct(product : Produit, addQuantity : boolean){
-    this.orderProductChange.next(new  OrderProduit(product, addQuantity?1:-1));
-    console.log(addQuantity);
+   set id(value: number) {
+    this._id = value;
   }
 
-  public incrementQuantityOfProduct(product : Produit){
-    this.emitOrderProduct(product,true);
+  public AjoutPanier(produit: Produit){
+    this.ListeAuPanier.push(produit);
+    this.panierService.change(this.ListeAuPanier);
   }
-
-  public decrementQuantityOfProduct(product : Produit){
-    this.emitOrderProduct(product,false);
-  }
-
-  public emitAndResetOrder() {
-    this.emitOrderValidated();
-    this.currentOrder = new Order();
-  }
-
-  public emitOrderValidated() {
-    this.orderValidated.next(this.currentOrder);
-  }
-
 
 
 }

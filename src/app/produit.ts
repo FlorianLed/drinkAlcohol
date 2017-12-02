@@ -1,6 +1,8 @@
 import {current} from 'codelyzer/util/syntaxKind';
+import {PanierComponent} from "./panier/panier.component";
 
 export class Produit {
+
 
   private _nom: string;
   private _prix: number;
@@ -10,7 +12,7 @@ export class Produit {
   private _description: string;
   private _pourcentage: number;
   id: number;
-
+  public panier: PanierComponent;
 
   constructor(nom: string = '', prix: number = 0, stock: number = 0, urlImage: string = '', description: string = '', pourcentage: number = 0) {
     this._nom = nom;
@@ -20,7 +22,6 @@ export class Produit {
     this._description = description;
     this._pourcentage = pourcentage;
   }
-
 
   get nom(): string {
     return this._nom;

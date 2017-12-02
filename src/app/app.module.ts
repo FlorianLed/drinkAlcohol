@@ -17,6 +17,7 @@ import { AdminPagePrincipalComponent } from './admin-page-principal/admin-page-p
 import { PanierComponent } from './panier/panier.component';
 import { FilterPrixPipe } from './filter-prix.pipe';
 import {PanierService} from "./panier.service";
+import { FilterPipe } from './filter.pipe';
 
 
 const routes: Routes = [
@@ -67,7 +68,8 @@ const routes: Routes = [
     AdminGestionUtilisateurComponent,
     AdminPagePrincipalComponent,
     PanierComponent,
-    FilterPrixPipe
+    FilterPrixPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

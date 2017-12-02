@@ -1,11 +1,16 @@
 
-.container .jumbotron .logo img {
+/*.container .jumbotron .logo img {
   display: block;
   width: 10%;
   height: 50%;
-}
+}*/
 
 #main{
   margin-left: 100px;
   margin-right: 100px;
 }
+.pre-scrollable {
+  max-height: 100px;
+  overflow-y: scroll;
+}
+

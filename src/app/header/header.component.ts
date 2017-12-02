@@ -1,15 +1,15 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Produit} from "../produit";
 import {ProduitManagerService} from "../produit-manager.service";
-import {OrderProduit} from "../order-produit";
 import {PanierService} from "../panier.service";
+import {FilterPipe} from "../filter.pipe";
 
 
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 
 })
 export class HeaderComponent implements OnInit {
@@ -17,9 +17,8 @@ export class HeaderComponent implements OnInit {
 
   public listeProduit: Produit[] = [];
   public ListeAuPanier: Produit[] = [];
-  public prod: Produit;
-
   public typeFilterTodo:number = 0;
+  public term;
 
 
   @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
@@ -61,19 +60,9 @@ export class HeaderComponent implements OnInit {
   }
 
   public AjoutPanier(produit: Produit){
-    //this.id = ide;
-    /*this.produitService
-      .getProduit(ide)
-      .subscribe(produit => {
-        this.prod = Produit.fromJSON(produit);
-        this.ListeAuPanier.push(this.prod);
-      });*/
     this.ListeAuPanier.push(produit);
     this.panierService.change(this.ListeAuPanier);
   }
-
-
-
 
 
 }

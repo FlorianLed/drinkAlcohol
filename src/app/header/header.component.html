@@ -1,17 +1,14 @@
-<nav class="navbar navbar-inverse " id="main" ><!--navbar-fixed-top-->
+<nav class="navbar navbar-inverse navbar-fixed-top " id="main" ><!--navbar-fixed-top-->
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">DrinkAlcohol</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a routerLink="/catégorie">Catégorie</a></li>
-      <li class="active"><a routerLink="/à_propos">A propos</a></li>
       <li class="active"><a routerLink="/contact">Contact</a></li>
     </ul>
-    <form class="navbar-form navbar-left" >
+    <form class="navbar-form navbar-left" id="filter">
       <div class="form-group" >
-        <input type="text" class="form-control"  name="motcle" placeholder="Mot clé">
-        <button type="submit" class="btn btn-default">Rechercher</button>
+        <input type="text" class="form-control"  name="motcle" placeholder="Mot clé" [(ngModel)]="term" id="f" #f="ngModel">
       </div>
     </form>
     <ul class="nav navbar-nav">
@@ -23,56 +20,61 @@
   </div>
 </nav>
 
+<br>
+<form>
+  <label class="radio-inline">
+    <input type="radio" name="typeFilterTodo" [value]="0" [(ngModel)]="typeFilterTodo"> Tous les alcools
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="typeFilterTodo" [value]="1" [(ngModel)]="typeFilterTodo"> <15€
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="typeFilterTodo" [value]="2" [(ngModel)]="typeFilterTodo"> >15€
+  </label>
+</form>
 
-<div class="container">
 
-  <div class="jumbotron">
+<div class="container w3-container">
+
+
+  <!--<div class="jumbotron">
     <h1>DrinkAlcohol</h1>
     <div class="logo"><img src="http://www.novemberfire.com/shirtspopup/NFTpop137.gif"/></div>
-  </div>
+    filterPrix:typeFilterTodo
 
-  <input type="radio" name="typeFilterTodo" [value]="0" [(ngModel)]="typeFilterTodo"> Tous les alcools
-  <input type="radio" name="typeFilterTodo" [value]="1" [(ngModel)]="typeFilterTodo"> <15€
-  <input type="radio" name="typeFilterTodo" [value]="2" [(ngModel)]="typeFilterTodo"> >15€
-
+  </div>-->
     <div class="row">
       <div class="col">
         <div class="row">
-          <div *ngFor="let produit of listeProduit | filterPrix:typeFilterTodo" >
+          <div *ngFor="let produit of listeProduit| filter:term |filterPrix:typeFilterTodo;" >
             <article class="col-md-4 col-lg-offset-1">
               <div id="products" class="row list-group">
-                <div class="item  col-xs-4 col-lg-12">
-                  <div class="thumbnail">
-                    <img class="group list-group-image" [src]="produit.urlImage" alt="" height="26"/>
-                    <span class="label label-success">{{produit.pourcentage}}%</span>
-                    <div class="caption">
-                      <h4 class="group inner list-group-item-heading">
-                        {{produit.nom}}</h4>
-                      <p class="group inner list-group-item-text">
-                        {{produit.description}}
-                      </p>
-                      <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                          <p class="lead" >
-                            {{produit.prix}}€</p>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                          <button class="btn btn-success" (click)="AjoutPanier(produit)">Ajouter aux panier</button>
-                        </div>
-                      </div>
+
+
+                <div class="w3-card" style="width:120%">
+                  <img [src]="produit.urlImage" alt="Person" style="width:100%">
+                  <span class="label label-success">{{produit.pourcentage}}%</span>
+                  <div class="w3-container">
+
+                    <div class="row col-xs-12">
+                      <h4><b>{{produit.nom}} {{produit.prix}}€ <button class="btn btn-success pull-right" (click)="AjoutPanier(produit)">Ajouter aux panier</button></b></h4>
                     </div>
+
+                    <div class="row col-xs-12">
+                      <br>
+                      <p class="pre-scrollable" >{{produit.description}}€</p>
+                    </div>
+
                   </div>
                 </div>
+
               </div>
             </article>
           </div>
         </div>
       </div>
     </div>
-
 </div>
-
-
 
 
 

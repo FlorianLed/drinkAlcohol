@@ -1,4 +1,5 @@
-<nav class="navbar navbar-inverse navbar-fixed-top " id="main" ><!--navbar-fixed-top-->
+<br><br>
+<nav class="navbar navbar-inverse" id="main" ><!--navbar-fixed-top-->
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">DrinkAlcohol</a>
@@ -20,36 +21,33 @@
   </div>
 </nav>
 
-<br>
-<form>
-  <label class="radio-inline">
-    <input type="radio" name="typeFilterTodo" [value]="0" [(ngModel)]="typeFilterTodo"> Tous les alcools
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="typeFilterTodo" [value]="1" [(ngModel)]="typeFilterTodo"> <15€
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="typeFilterTodo" [value]="2" [(ngModel)]="typeFilterTodo"> >15€
-  </label>
-</form>
-
 
 <div class="container w3-container">
 
+  <br><br><br>
 
-  <!--<div class="jumbotron">
-    <h1>DrinkAlcohol</h1>
-    <div class="logo"><img src="http://www.novemberfire.com/shirtspopup/NFTpop137.gif"/></div>
-    filterPrix:typeFilterTodo
+  <form>
+    <label class="radio-inline">
+      <input type="radio" name="typeFilterTodo" [value]="0" [(ngModel)]="typeFilterTodo"> Tous les alcools
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="typeFilterTodo" [value]="1" [(ngModel)]="typeFilterTodo"> <15€
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="typeFilterTodo" [value]="2" [(ngModel)]="typeFilterTodo"> >15€
+    </label>
+  </form>
 
-  </div>-->
+
+  <br>
+
     <div class="row">
       <div class="col">
         <div class="row">
           <div *ngFor="let produit of listeProduit| filter:term |filterPrix:typeFilterTodo;" >
             <article class="col-md-4 col-lg-offset-1">
-              <div id="products" class="row list-group">
 
+              <div id="products" class="row list-group">
 
                 <div class="w3-card" style="width:120%">
                   <img [src]="produit.urlImage" alt="Person" style="width:100%">
@@ -62,7 +60,7 @@
 
                     <div class="row col-xs-12">
                       <br>
-                      <p class="pre-scrollable" >{{produit.description}}€</p>
+                      <p class="pre-scrollable" >{{produit.description}}</p>
                     </div>
 
                   </div>

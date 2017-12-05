@@ -16,7 +16,7 @@ export class PanierComponent implements OnInit{
 
 
   public ListeAuPanier: Produit[] = [];
-  public prod: Produit;
+  public value:number = 1;
   public quantite: number[]=[];
 
 
@@ -32,11 +32,11 @@ export class PanierComponent implements OnInit{
     for(let i=0;i< this.ListeAuPanier.length;i++){
       if(this.quantite[i]<=this.ListeAuPanier[i].stock && this.quantite[i]>=0){
         total += this.ListeAuPanier[i].prix*this.quantite[i];
-        quantDispo = this.ListeAuPanier[i].stock-this.quantite[i];
+        /*quantDispo = this.ListeAuPanier[i].stock-this.quantite[i];
         console.log(total);
         console.log(this.quantite[i]);
         console.log(this.ListeAuPanier[i].stock);
-        console.log("Quantité disponible : "+quantDispo);
+        console.log("Quantité disponible : "+quantDispo);*/
       }
     }
     return total;

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Utilisateur} from '../utilisateur';
 import {UtilisateurManagerService} from '../utilisateur-manager.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -30,7 +31,7 @@ export class InscriptionComponent implements OnInit {
 
   @Output() private todosChange: EventEmitter<Utilisateur> = new EventEmitter();
 
-  constructor(public utilisateurService: UtilisateurManagerService) { }
+  constructor(public utilisateurService: UtilisateurManagerService,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.utilisateurService
@@ -61,12 +62,11 @@ export class InscriptionComponent implements OnInit {
     this.tmpPseudo = '';
     this.tmpMp = '';
     this.emitUtilisateurs();
+    this.router.navigate(['../connexion'], { relativeTo: this.route });
   }
 
   public emitUtilisateurs() {
     this.listeUtilisateurChange.next(this.listeUtilisateurs);
   }
-
-
 
 }

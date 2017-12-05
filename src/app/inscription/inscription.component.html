@@ -142,7 +142,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2">Mot de passe:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="mp" placeholder="Entrez votre mot de passe" name="mp" [(ngModel)]="tmpMp" required #mp="ngModel">
+        <input type="password" class="form-control" id="mp" placeholder="Entrez votre mot de passe" name="mp" [(ngModel)]="tmpMp" required #mp="ngModel">
 
         <div  *ngIf="mp.errors && (mp.dirty || mp.touched)" class="alert alert-danger">
           <div  [hidden]="!mp.errors.required">
@@ -156,7 +156,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2">Confirmer le mot de passe:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="cmp" placeholder="Confirmer votre mot de passe" name="cmp" [(ngModel)]="tmpCmp" required #cmp="ngModel">
+        <input type="password" class="form-control" id="cmp" placeholder="Confirmer votre mot de passe" name="cmp" [(ngModel)]="tmpCp" required #cmp="ngModel">
 
         <div  *ngIf="cmp.errors && (cmp.dirty || cmp.touched)" class="alert alert-danger">
           <div  [hidden]="!cmp.errors.required">

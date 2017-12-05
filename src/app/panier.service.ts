@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Produit} from "./produit";
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Produit} from './produit';
 
 @Injectable()
 export class PanierService {
@@ -10,7 +10,7 @@ export class PanierService {
 
   constructor() { }
 
-  change(produit: Produit[]){
+  change(produit: Produit[]) {
     this.messageSource.next(produit);
   }
 

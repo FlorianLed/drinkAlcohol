@@ -16,8 +16,10 @@ import {UtilisateurManagerService} from './utilisateur-manager.service';
 import { AdminPagePrincipalComponent } from './admin-page-principal/admin-page-principal.component';
 import { PanierComponent } from './panier/panier.component';
 import { FilterPrixPipe } from './filter-prix.pipe';
-import {PanierService} from "./panier.service";
+import {PanierService} from './panier.service';
 import { FilterPipe } from './filter.pipe';
+import {UtilisateurService} from "./utilisateur.service";
+import { UtilisateurPipe } from './utilisateur.pipe';
 
 
 const routes: Routes = [
@@ -69,7 +71,8 @@ const routes: Routes = [
     AdminPagePrincipalComponent,
     PanierComponent,
     FilterPrixPipe,
-    FilterPipe
+    FilterPipe,
+    UtilisateurPipe
   ],
   imports: [
     BrowserModule,
@@ -78,7 +81,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [UtilisateurManagerService, ProduitManagerService,PanierService],
+  providers: [UtilisateurManagerService, ProduitManagerService, PanierService, UtilisateurService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

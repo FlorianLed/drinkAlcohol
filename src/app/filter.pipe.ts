@@ -48,7 +48,7 @@ export class FilterPipe implements PipeTransform {
       }
       else
       {
-        if(term.toLowerCase().length<5)
+        if (term.toLowerCase().length < 5)
         {
           return listeProduit.filter(function (produit) {
             return produit.nom.toLowerCase().includes(term.toLowerCase());
@@ -56,7 +56,7 @@ export class FilterPipe implements PipeTransform {
         }
         else
         {
-          return term.toLowerCase()? listeProduit.filter((produit) => this.comparaison(produit.nom.toLowerCase(),term.toLowerCase())<=8) : listeProduit;
+          return term.toLowerCase() ? listeProduit.filter((produit) => this.comparaison(produit.nom.toLowerCase(), term.toLowerCase()) <= 8) : listeProduit;
         }
       }
   }

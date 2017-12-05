@@ -1,8 +1,10 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {Produit} from "../produit";
-import {ProduitManagerService} from "../produit-manager.service";
-import {PanierService} from "../panier.service";
-import {FilterPipe} from "../filter.pipe";
+import {Produit} from '../produit';
+import {ProduitManagerService} from '../produit-manager.service';
+import {PanierService} from '../panier.service';
+import {FilterPipe} from '../filter.pipe';
+import {UtilisateurService} from '../utilisateur.service';
+import {Utilisateur} from '../utilisateur';
 
 
 
@@ -17,14 +19,15 @@ export class HeaderComponent implements OnInit {
 
   public listeProduit: Produit[] = [];
   public ListeAuPanier: Produit[] = [];
-  public typeFilterTodo:number = 0;
+  public listeUser: Utilisateur[]= [];
+  public typeFilterTodo = 0;
   public term;
 
 
   @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
 
 
-  constructor(public produitService: ProduitManagerService,public panierService: PanierService) { }
+  constructor(public produitService: ProduitManagerService, public panierService: PanierService, public utilisateurService: UtilisateurService) { }
 
   ngOnInit() {
     this.produitService
@@ -33,6 +36,8 @@ export class HeaderComponent implements OnInit {
         this.listeProduit = Produit.fromJSONs(produits);
         this.emitProduits();
       });
+
+    this.utilisateurService.currentMessage.subscribe(utilisateurs => this.listeUser = utilisateurs);
   }
 
 
@@ -42,14 +47,15 @@ export class HeaderComponent implements OnInit {
 
   public recherche(recherche: string) {
     this.listeProduit = [];
-    for(let i = 0;i< this.listeProduit.length;i++){
+    for (let i = 0; i < this.listeProduit.length; i++) {
       const pos = this.listeProduit[i].nom.toLowerCase().search(recherche.toLowerCase());
-      if(pos>=0){
+      if (pos >= 0) {
         this.listeProduit.push(this.listeProduit[i]);
       }
     }
   }
-  private  _id:number;
+
+  private _id: number;
 
    get id(): number {
     return this._id;
@@ -59,7 +65,7 @@ export class HeaderComponent implements OnInit {
     this._id = value;
   }
 
-  public AjoutPanier(produit: Produit){
+  public AjoutPanier(produit: Produit) {
     this.ListeAuPanier.push(produit);
     this.panierService.change(this.ListeAuPanier);
   }

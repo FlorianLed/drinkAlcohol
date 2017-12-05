@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Utilisateur} from '../utilisateur';
 import {UtilisateurManagerService} from '../utilisateur-manager.service';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
@@ -29,9 +29,7 @@ export class InscriptionComponent implements OnInit {
 
   public u: Utilisateur;
 
-  @Output() private todosChange: EventEmitter<Utilisateur> = new EventEmitter();
-
-  constructor(public utilisateurService: UtilisateurManagerService,private router: Router, private route: ActivatedRoute) { }
+  constructor(public utilisateurService: UtilisateurManagerService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.utilisateurService

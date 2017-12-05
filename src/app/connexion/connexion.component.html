@@ -1,28 +1,42 @@
 <div class="container">
   <div class="logo"><img src="http://www.novemberfire.com/shirtspopup/NFTpop137.gif"/></div>
 
-  <form>
+  <form method="post" #formulaire="ngForm" (submit)="seConnecter()">
 
     <div class="input-group" id="p">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input id="email" type="text" class="form-control" name="Pseudo" placeholder="Pseudo">
+      <input id="email" type="text" class="form-control" name="Email" placeholder="Email" required  [(ngModel)]="tmpEmail" #email="ngModel">
+
+      <div  *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+        <div  [hidden]="!email.errors.required">
+          Ce champs n'est pas rempli !
+        </div>
+      </div>
+
     </div>
 
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input id="password" type="password" class="form-control" name="MP" placeholder="Mot de passe">
+      <input id="password" type="password" class="form-control" name="MP" placeholder="Mot de passe" required  [(ngModel)]="tmpMP" #MP="ngModel">
+
+      <div  *ngIf="MP.errors && (MP.dirty || MP.touched)" class="alert alert-danger">
+        <div  [hidden]="!MP.errors.required">
+          Ce champs n'est pas rempli !
+        </div>
+      </div>
+
     </div>
 
     <div class="checkbox">
       <label><input type="checkbox" name="remember"> Se souvenir </label>
     </div>
 
-    <button type="submit" routerLink="/admin-page-principal" class="btn btn-sm btn-primary btn-lg btn-block">Se connecter</button>
+    <button type="submit" class="btn btn-sm btn-primary btn-lg btn-block">Se connecter</button>
 
     <br>
 
     <div class="alert alert-info">
-      <strong>Info !</strong> Pas encore enregistré ? <a routerLink="/inscription" class="alert-link">Créer un compte</a>.
+      <strong>Info !</strong> Pas encore enregistré ? <a class="alert-link">Créer un compte</a>.
     </div>
 
   </form>

@@ -12,6 +12,10 @@ export class UtilisateurManagerService {
     return this.http.get('http://localhost:65281/api/utilisateur');
   }
 
+  public getProduit(id: number): Observable<Utilisateur> {
+    return this.http.get('http://localhost:65281/api/utilisateur/' + id);
+  }
+
   public updateUtilisateur(utilisateur: Utilisateur): Observable<any> {
     return this.http.put('http://localhost:65281/api/utilisateur', utilisateur.getCleanDataForSending());
   }

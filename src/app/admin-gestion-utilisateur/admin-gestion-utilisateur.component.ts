@@ -15,6 +15,8 @@ import 'rxjs/add/operator/switchMap';
 })
 export class AdminGestionUtilisateurComponent implements OnInit {
 
+  public term;
+
   public tmpNom = '';
   public tmpPrenom = '';
   public tmpDateNaiss = '';
@@ -33,8 +35,6 @@ export class AdminGestionUtilisateurComponent implements OnInit {
 
   private url = 'http://localhost:65281/api/utilisateur';
 
-  public inputForSearchingUsers = new FormControl();
-
   constructor(public utilisateurService: UtilisateurManagerService, public http: HttpClient) { }
 
   ngOnInit() {
@@ -45,15 +45,6 @@ export class AdminGestionUtilisateurComponent implements OnInit {
         this.emitUtilisateurs();
       });
 
-    this.inputForSearchingUsers
-      .valueChanges
-      .filter(text => text.length >= 3)
-      .debounceTime(800)
-      .distinctUntilChanged()
-      .switchMap(text => this.http.get<any[]>(this.url, {
-        params: new HttpParams().set('q', text)
-      }))
-      .subscribe(listeUtilisateurs => this.listeUtilisateurs = listeUtilisateurs);
   }
 
   public createUtilisateur() {

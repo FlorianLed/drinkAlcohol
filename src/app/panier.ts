@@ -1,5 +1,5 @@
-import {CommandeProduit, ListeCommandeProduits} from "./commande-produit";
-import {Produit} from "./produit";
+import {CommandeProduit, ListeCommandeProduits} from './commande-produit';
+import {Produit} from './produit';
 
 export class Panier {
   private _listeCommandeProduits: ListeCommandeProduits = [];
@@ -10,7 +10,7 @@ export class Panier {
   }
 
 
-  public totalDeToutesLesCommandes() : number{
+  public totalDeToutesLesCommandes(): number {
     return this._listeCommandeProduits.reduce((tot, commandeAtcuelle) => tot + commandeAtcuelle.total(), 0);
   }
 
@@ -50,7 +50,7 @@ export class Panier {
 
   private modifierQuantiteProduit(produit: Produit, ajouterOuSupprimerQuantite: number) {
     const indexProduct = this.recherche(produit);
-    let commandeProduitsSelectionnee:CommandeProduit = null;
+    let commandeProduitsSelectionnee: CommandeProduit = null;
 
     if (indexProduct === -1) {
       return;
@@ -72,7 +72,7 @@ export class Panier {
     this._listeCommandeProduits = this._listeCommandeProduits.filter(commandeProduit => commandeProduit.quantite !== 0);
   }
 
-  public isEmpty() : boolean {
+  public isEmpty(): boolean {
     return this._listeCommandeProduits.length === 0;
   }
 

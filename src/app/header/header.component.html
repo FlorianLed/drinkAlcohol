@@ -16,8 +16,8 @@
       <li class="active"><a routerLink="/panier">Mon panier</a></li>
     </ul>
 
-    <ul class="nav navbar-nav">
-      <li class="active"> {{listeUser[0].prenom}} </li>
+    <ul class="nav navbar-nav" *ngFor="let user of listeUser; index as i">
+      <li class="active"> {{listeUser[i].prenom}} </li>
     </ul>
 
     <div class="navbar-header" class=pull-right>
@@ -26,6 +26,9 @@
   </div>
 </nav>
 
+<p *ngFor="let user of listeUser; index as i">
+  {{listeUser[i].prenom}}
+</p>
 
 <div class="container w3-container">
 

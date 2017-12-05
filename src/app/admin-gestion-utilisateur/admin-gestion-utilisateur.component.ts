@@ -87,8 +87,17 @@ export class AdminGestionUtilisateurComponent implements OnInit {
     this.listeUtilisateurChange.next(this.listeUtilisateurs);
   }
 
-  ngOnDestroy() {
 
+  public recherche(recherche: string) {
+    this.listeUtilisateurs = [];
+    for (let i = 0; i < this.listeUtilisateurs.length; i++) {
+      const pos = this.listeUtilisateurs[i].nom.toLowerCase().search(recherche.toLowerCase());
+      if (pos >= 0) {
+        this.listeUtilisateurs.push(this.listeUtilisateurs[i]);
+      }
+    }
   }
+
+
 
 }

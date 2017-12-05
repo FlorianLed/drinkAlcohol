@@ -39,8 +39,11 @@ export class ConnexionComponent implements OnInit {
       if (this.tmpEmail === this.listeUtilisateurs[i].mail && this.tmpMP === this.listeUtilisateurs[i].mp) {
         this.tmpEmail = '';
         this.tmpMP = '';
-        this.router.navigate(['../admin-page-principal'], { relativeTo: this.route });
+        console.log(this.listeUtilisateurs[i].nom);
+        this.router.navigate(['../accueil'], { relativeTo: this.route });
+        return;
       }
+      console.error('error');
       this.emitUtilisateurs();
     }
   }

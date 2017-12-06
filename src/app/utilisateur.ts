@@ -9,11 +9,11 @@ export class Utilisateur {
   private _num: number;
   private _gsm: number;
   private _mail: string;
-  private _pseudos: string;
   private _mp: string;
+  private _admin: boolean;
 
   constructor(nom: string = '', prenom: string = '', dateNaissance: string = '', ville: string = '', cp: number = 0, rue: string = '',
-              num: number = 0 , gsm: number = 0, mail: string = '', pseudos: string = '', mp: string = '') {
+              num: number = 0 , gsm: number = 0, mail: string = '', mp: string = '', admin: boolean = false) {
 
     this._nom = nom ;
     this._prenom = prenom ;
@@ -24,7 +24,6 @@ export class Utilisateur {
     this._num = num ;
     this._gsm = gsm ;
     this._mail = mail ;
-    this._pseudos = pseudos ;
     this._mp = mp ;
   }
 
@@ -42,13 +41,6 @@ export class Utilisateur {
 
   set mp(value: string) {
     this._mp = value;
-  }
-  get pseudos(): string {
-    return this._pseudos;
-  }
-
-  set pseudos(value: string) {
-    this._pseudos = value;
   }
   get mail(): string {
     return this._mail;
@@ -113,6 +105,13 @@ export class Utilisateur {
   set nom(value: string) {
     this._nom = value;
   }
+  get admin(): boolean {
+    return this._admin;
+  }
+
+  set admin(value: boolean) {
+    this._admin = value;
+  }
 
   public static fromJSON (rawTodo: any): Utilisateur {
     const tmpUtilisateur = new Utilisateur(rawTodo['Nom']);
@@ -125,8 +124,8 @@ export class Utilisateur {
     tmpUtilisateur.num = rawTodo['Numero'];
     tmpUtilisateur.gsm = rawTodo['Gsm'];
     tmpUtilisateur.mail = rawTodo['Email'];
-    tmpUtilisateur.pseudos = rawTodo['Pseudo'];
     tmpUtilisateur.mp = rawTodo['MDP'];
+    tmpUtilisateur.admin = rawTodo['Admin'];
     return tmpUtilisateur;
   }
 
@@ -136,8 +135,8 @@ export class Utilisateur {
 
   public getCleanDataForSending(): any {
     return {
+      'Admin': this.admin,
       'MDP': this.mp,
-      'Pseudo': this.pseudos,
       'Email': this.mail,
       'Gsm': this.gsm,
       'Numero': this.num,

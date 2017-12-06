@@ -20,8 +20,8 @@ export class InscriptionComponent implements OnInit {
   public tmpNum: number;
   public tmpGsm: number;
   public tmpMail = '';
-  public tmpPseudo = '';
   public tmpMp = '';
+  public tmpAdmin = false;
 
   public listeUtilisateurs: Utilisateur[] = [];
 
@@ -41,7 +41,7 @@ export class InscriptionComponent implements OnInit {
   }
 
   public creerUtilisateur() {
-    const tmpUtilisateur = new Utilisateur(this.tmpNom, this.tmpPrenom, this.tmpDateNaiss, this.tmpVille, this.tmpCp, this.tmpRue, this.tmpNum, this.tmpGsm, this.tmpMail, this.tmpPseudo, this.tmpMp);
+    const tmpUtilisateur = new Utilisateur(this.tmpNom, this.tmpPrenom, this.tmpDateNaiss, this.tmpVille, this.tmpCp, this.tmpRue, this.tmpNum, this.tmpGsm, this.tmpMail, this.tmpMp, this.tmpAdmin);
     this.listeUtilisateurs.push(tmpUtilisateur);
     this
       .utilisateurService
@@ -57,8 +57,8 @@ export class InscriptionComponent implements OnInit {
     this.tmpNum = 0;
     this.tmpGsm = 0;
     this.tmpMail = '';
-    this.tmpPseudo = '';
     this.tmpMp = '';
+    this.tmpAdmin = false;
     this.emitUtilisateurs();
     this.router.navigate(['../connexion'], { relativeTo: this.route });
   }

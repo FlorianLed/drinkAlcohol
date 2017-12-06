@@ -14,8 +14,8 @@
       <th>Numéro</th>
       <th>Gsm</th>
       <th>Email</th>
-      <th>Pseudo</th>
       <th>Mot de passe</th>
+      <th>Admin</th>
     </tr>
     </thead>
     <tbody>
@@ -30,8 +30,8 @@
       <td> <input type="text" [(ngModel)]="utilisateur.num" (blur)="updateUtilisateur(utilisateur)"> </td>
       <td> <input type="text" [(ngModel)]="utilisateur.gsm" (blur)="updateUtilisateur(utilisateur)"> </td>
       <td> <input type="text" [(ngModel)]="utilisateur.mail" (blur)="updateUtilisateur(utilisateur)"> </td>
-      <td> <input type="text" [(ngModel)]="utilisateur.pseudos" (blur)="updateUtilisateur(utilisateur)"> </td>
       <td> <input type="text" [(ngModel)]="utilisateur.mp" (blur)="updateUtilisateur(utilisateur)"> </td>
+      <td> <input type="text" [(ngModel)]="utilisateur.admin" (blur)="updateUtilisateur(utilisateur)"> </td>
     </tr>
     </tbody>
   </table>

@@ -36,16 +36,33 @@ export class ConnexionComponent implements OnInit {
 
   seConnecter() {
     for (let i = 0; i < this.listeUtilisateurs.length; i++) {
+      console.log(this.listeUtilisateurs[i].mail);
+      console.log(this.listeUtilisateurs[i].mp);
+
       if (this.tmpEmail === this.listeUtilisateurs[i].mail && this.tmpMP === this.listeUtilisateurs[i].mp) {
-        this.tmpEmail = '';
-        this.tmpMP = '';
+        console.log(this.listeUtilisateurs.length);
         console.log(this.listeUtilisateurs[i].nom);
-        this.router.navigate(['../accueil'], { relativeTo: this.route });
-        return;
+        console.log(this.listeUtilisateurs[i].admin);
+        if (this.listeUtilisateurs[i].admin === true) {
+          this.router.navigate(['../admin-page-principal'], { relativeTo: this.route });
+          this.tmpEmail = '';
+          this.tmpMP = '';
+          return;
+        }
+        else if(this.listeUtilisateurs[i].admin === false) {
+          this.router.navigate(['../accueil'], { relativeTo: this.route });
+          this.tmpEmail = '';
+          this.tmpMP = '';
+          return;
+        }
       }
+
       console.error('error');
       this.emitUtilisateurs();
     }
+
+    this.tmpEmail = '';
+    this.tmpMP = '';
   }
 
 

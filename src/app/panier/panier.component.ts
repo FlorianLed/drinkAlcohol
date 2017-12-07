@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ProduitManagerService} from '../produit-manager.service';
 import {Produit} from '../produit';
-import {HeaderComponent} from '../header/header.component';
-import {OrderProduit, OrderProduits} from '../order-produit';
 import {PanierService} from '../panier.service';
 
 

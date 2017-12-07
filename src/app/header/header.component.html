@@ -21,14 +21,11 @@
     </ul>
 
     <div class="navbar-header" class=pull-right>
-      <a class="navbar-brand" routerLink="/connexion">Connexion</a>
+      <a class="navbar-brand" routerLink="/connexion">{{message}}</a>
     </div>
   </div>
 </nav>
 
-<p *ngFor="let user of listeUser; index as i">
-  {{listeUser[i].prenom}}
-</p>
 
 <div class="container w3-container">
 
@@ -82,5 +79,7 @@
     </div>
 </div>
 
-
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
 

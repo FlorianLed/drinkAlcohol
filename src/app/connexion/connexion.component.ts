@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UtilisateurManagerService} from '../utilisateur-manager.service';
 import {Utilisateur} from '../utilisateur';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UtilisateurService} from "../utilisateur.service";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class ConnexionComponent implements OnInit {
 
   @Output() public listeUtilisateurChange: EventEmitter<Utilisateur []> = new EventEmitter();
 
-  constructor(public utilisateurService: UtilisateurManagerService, private router: Router, private route: ActivatedRoute) { }
+  constructor(public utilisateurService: UtilisateurManagerService, private router: Router, private route: ActivatedRoute,private user: UtilisateurService) { }
 
   ngOnInit() {
     this.utilisateurService
@@ -47,12 +48,14 @@ export class ConnexionComponent implements OnInit {
           this.router.navigate(['../admin-page-principal'], { relativeTo: this.route });
           this.tmpEmail = '';
           this.tmpMP = '';
+          this.user.changeMessage(this.listeUtilisateurs[i].nom);
           return;
         }
         else if(this.listeUtilisateurs[i].admin === false) {
           this.router.navigate(['../accueil'], { relativeTo: this.route });
           this.tmpEmail = '';
           this.tmpMP = '';
+          this.user.changeMessage(this.listeUtilisateurs[i].nom);
           return;
         }
       }
@@ -64,6 +67,10 @@ export class ConnexionComponent implements OnInit {
     this.tmpEmail = '';
     this.tmpMP = '';
   }
+
+
+
+
 
 
 }

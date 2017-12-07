@@ -20,6 +20,8 @@ import {PanierService} from './panier.service';
 import { FilterPipe } from './filter.pipe';
 import {UtilisateurService} from "./utilisateur.service";
 import { UtilisateurPipe } from './utilisateur.pipe';
+import { AgmCoreModule } from '@agm/core';
+
 
 
 const routes: Routes = [
@@ -79,7 +81,11 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC4yFqM3P61cGLXIj6NQ12RnfTvgU6H7hk '
+    })
+
   ],
   providers: [UtilisateurManagerService, ProduitManagerService, PanierService, UtilisateurService],
   bootstrap: [AppComponent]

@@ -97,7 +97,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2">Gsm:</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="gsm" placeholder="Entrez votre numéro de téléphone" name="gsm" [(ngModel)]="tmpGsm" required #gsm="ngModel">
+        <input type="number" class="form-control" id="gsm" placeholder="Entrez votre numéro de téléphone" name="gsm"  [(ngModel)]="tmpGsm" required #gsm="ngModel">
 
         <div  *ngIf="gsm.errors && (gsm.dirty || gsm.touched)" class="alert alert-danger">
           <div  [hidden]="!gsm.errors.required">

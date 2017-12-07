@@ -14,7 +14,6 @@ export class PanierComponent implements OnInit{
 
 
   public ListeAuPanier: Produit[] = [];
-  public value = 1;
   public quantite: number[]= [];
 
 

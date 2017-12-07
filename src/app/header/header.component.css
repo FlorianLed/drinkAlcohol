@@ -14,3 +14,6 @@
   overflow-y: scroll;
 }
 
+agm-map {
+  height: 200px;
+}

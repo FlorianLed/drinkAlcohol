@@ -22,12 +22,14 @@ export class HeaderComponent implements OnInit {
   public listeUser: Utilisateur[]= [];
   public typeFilterTodo = 0;
   public term;
+  lat: number = 50.45167199999999;
+  lng: number = 3.984348100000034;
 
-
+  public message:string;
   @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
 
 
-  constructor(public produitService: ProduitManagerService, public panierService: PanierService, public utilisateurService: UtilisateurService) { }
+  constructor(public produitService: ProduitManagerService, public panierService: PanierService, private user: UtilisateurService) { }
 
   ngOnInit() {
     this.produitService
@@ -36,8 +38,7 @@ export class HeaderComponent implements OnInit {
         this.listeProduit = Produit.fromJSONs(produits);
         this.emitProduits();
       });
-
-    this.utilisateurService.currentMessage.subscribe(utilisateurs => this.listeUser = utilisateurs);
+    this.user.currentMessage.subscribe(message => this.message = message);
   }
 
 

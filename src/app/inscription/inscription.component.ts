@@ -4,10 +4,11 @@ import {UtilisateurManagerService} from '../utilisateur-manager.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 
+
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
-  styleUrls: ['./inscription.component.css']
+  styleUrls: ['./inscription.component.css'],
 })
 export class InscriptionComponent implements OnInit {
 
@@ -22,6 +23,7 @@ export class InscriptionComponent implements OnInit {
   public tmpMail = '';
   public tmpMp = '';
   public tmpAdmin = false;
+  public tmpCmp= '';
 
   public listeUtilisateurs: Utilisateur[] = [];
 
@@ -41,26 +43,37 @@ export class InscriptionComponent implements OnInit {
   }
 
   public creerUtilisateur() {
-    const tmpUtilisateur = new Utilisateur(this.tmpNom, this.tmpPrenom, this.tmpDateNaiss, this.tmpVille, this.tmpCp, this.tmpRue, this.tmpNum, this.tmpGsm, this.tmpMail, this.tmpMp, this.tmpAdmin);
-    this.listeUtilisateurs.push(tmpUtilisateur);
-    this
-      .utilisateurService
-      .createUtilisateur(tmpUtilisateur)
-      .subscribe(utilisateur => tmpUtilisateur.id = Utilisateur.fromJSON(utilisateur).id);
 
-    this.tmpNom = '';
-    this.tmpPrenom = '';
-    this.tmpDateNaiss = '';
-    this.tmpVille = '';
-    this.tmpCp = 0;
-    this.tmpRue = '';
-    this.tmpNum = 0;
-    this.tmpGsm = 0;
-    this.tmpMail = '';
-    this.tmpMp = '';
-    this.tmpAdmin = false;
-    this.emitUtilisateurs();
-    this.router.navigate(['../connexion'], { relativeTo: this.route });
+    if(this.tmpMp != this.tmpCmp)
+    {
+      this.tmpCmp = '';
+      this.tmpMp='';
+    }
+    else
+    {
+
+      const tmpUtilisateur = new Utilisateur(this.tmpNom, this.tmpPrenom, this.tmpDateNaiss, this.tmpVille, this.tmpCp, this.tmpRue, this.tmpNum, this.tmpGsm, this.tmpMail, this.tmpMp, this.tmpAdmin);
+      this.listeUtilisateurs.push(tmpUtilisateur);
+      this
+        .utilisateurService
+        .createUtilisateur(tmpUtilisateur)
+        .subscribe(utilisateur => tmpUtilisateur.id = Utilisateur.fromJSON(utilisateur).id);
+
+      this.tmpNom = '';
+      this.tmpPrenom = '';
+      this.tmpDateNaiss = '';
+      this.tmpVille = '';
+      this.tmpCp = 0;
+      this.tmpRue = '';
+      this.tmpNum = 0;
+      this.tmpGsm = 0;
+      this.tmpMail = '';
+      this.tmpMp = '';
+      this.tmpAdmin = false;
+      this.emitUtilisateurs();
+      this.router.navigate(['../connexion'], { relativeTo: this.route });
+    }
+
   }
 
   public emitUtilisateurs() {

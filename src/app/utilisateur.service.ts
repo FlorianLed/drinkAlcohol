@@ -16,15 +16,19 @@ export class UtilisateurService {
 
 
 
-  private messageSource = new BehaviorSubject<string>("Connexion");
+  private messageSource = new BehaviorSubject<string>('Connexion');
   currentMessage = this.messageSource.asObservable();
+
+  private messageSourceId = new BehaviorSubject<number>(0);
+  currentMessageId = this.messageSourceId.asObservable();
 
   constructor() { }
 
   changeMessage(message: string) {
     this.messageSource.next(message);
-
-
   }
 
+  changeMessageId(messageId: number) {
+    this.messageSourceId.next(messageId);
+  }
 }

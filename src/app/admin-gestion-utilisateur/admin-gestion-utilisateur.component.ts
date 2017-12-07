@@ -35,7 +35,7 @@ export class AdminGestionUtilisateurComponent implements OnInit {
 
   private url = 'http://localhost:65281/api/utilisateur';
 
-  constructor(public utilisateurService: UtilisateurManagerService, public http: HttpClient) { }
+  constructor(public utilisateurService: UtilisateurManagerService) { }
 
   ngOnInit() {
     this.utilisateurService

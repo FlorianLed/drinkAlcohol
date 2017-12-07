@@ -20,7 +20,7 @@ import {PanierService} from './panier.service';
 import { FilterPipe } from './filter.pipe';
 import {UtilisateurService} from './utilisateur.service';
 import { UtilisateurPipe } from './utilisateur.pipe';
-import { AgmCoreModule } from '@agm/core';
+import {AgmCoreModule} from '@agm/core';
 
 
 

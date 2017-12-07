@@ -19,7 +19,7 @@ export class ConnexionComponent implements OnInit {
 
   @Output() public listeUtilisateurChange: EventEmitter<Utilisateur []> = new EventEmitter();
 
-  constructor(public utilisateurService: UtilisateurManagerService, private router: Router, private route: ActivatedRoute,private user: UtilisateurService) { }
+  constructor(public utilisateurService: UtilisateurManagerService, private router: Router, private route: ActivatedRoute, private user: UtilisateurService) { }
 
   ngOnInit() {
     this.utilisateurService
@@ -37,9 +37,6 @@ export class ConnexionComponent implements OnInit {
 
   seConnecter() {
     for (let i = 0; i < this.listeUtilisateurs.length; i++) {
-      console.log(this.listeUtilisateurs[i].mail);
-      console.log(this.listeUtilisateurs[i].mp);
-
       if (this.tmpEmail === this.listeUtilisateurs[i].mail && this.tmpMP === this.listeUtilisateurs[i].mp) {
         console.log(this.listeUtilisateurs.length);
         console.log(this.listeUtilisateurs[i].nom);
@@ -56,6 +53,7 @@ export class ConnexionComponent implements OnInit {
           this.tmpEmail = '';
           this.tmpMP = '';
           this.user.changeMessage(this.listeUtilisateurs[i].nom);
+          this.user.changeMessageId(this.listeUtilisateurs[i].id);
           return;
         }
       }

@@ -22,10 +22,10 @@ export class HeaderComponent implements OnInit {
   public listeUser: Utilisateur[]= [];
   public typeFilterTodo = 0;
   public term;
-  lat: number = 50.45167199999999;
-  lng: number = 3.984348100000034;
+  lat = 50.45167199999999;
+  lng = 3.984348100000034;
 
-  public message:string;
+  public message: string;
   @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
 
 

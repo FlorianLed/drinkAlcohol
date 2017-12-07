@@ -18,7 +18,7 @@ import { PanierComponent } from './panier/panier.component';
 import { FilterPrixPipe } from './filter-prix.pipe';
 import {PanierService} from './panier.service';
 import { FilterPipe } from './filter.pipe';
-import {UtilisateurService} from "./utilisateur.service";
+import {UtilisateurService} from './utilisateur.service';
 import { UtilisateurPipe } from './utilisateur.pipe';
 
 

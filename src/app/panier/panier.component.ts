@@ -3,7 +3,8 @@ import {Produit} from '../produit';
 import {PanierService} from '../panier.service';
 import {Commande} from '../commande';
 import {UtilisateurService} from '../utilisateur.service';
-import {ProduitManagerService} from "../produit-manager.service";
+import {ProduitManagerService} from '../produit-manager.service';
+import {Utilisateur} from '../utilisateur';
 
 
 @Component({
@@ -26,7 +27,6 @@ export class PanierComponent implements OnInit {
   @Output() public listeCommandeChange: EventEmitter<Commande []> = new EventEmitter();
   @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
 
-  public idProduitDernireCommande: number [] = [];
   public listeMaDerniereCommande: Produit [] = [];
 
   constructor(public panierService: PanierService, private user: UtilisateurService, public produitService: ProduitManagerService) { }
@@ -73,21 +73,15 @@ export class PanierComponent implements OnInit {
 
   public historiqueCommande() {
     let numCommande = 0;
-    const condition = 0;
-    for (let i = 0; i < this.listeCommande.length; i++) {
-      console.log(this.listeCommande[i].numeroCommande);
-      console.log(i);
-      console.log(this.listeCommande[i].idUtilisateur, this.messageId, 'test id');
-      if (this.listeCommande[i].idUtilisateur === this.messageId) {
-        console.log('cdt1');
+    let condition = 0;  // permet de rentrer qu'une seule fois ds le if pour prendre la dernière commande
+    for (let i = this.listeCommande.length - 1; i > 0 ; i--) {  // aller chercher le dernier numcommande de l'utilisateur
+      if (this.listeCommande[i].idUtilisateur === this.messageId) { // compare l'id ds la bd et celui qui s'est connecté sur le site
         if (condition === 0) {
-          console.log('cdt2');
           numCommande = this.listeCommande[i].numeroCommande;
-          console.log(numCommande);
+          condition++;
         }
 
         if (this.listeCommande[i].numeroCommande === numCommande) {
-          console.log('cdt3');
           for (let j = 0; j < this.listeProduit.length; j++) {
             if (this.listeProduit[j].id === this.listeCommande[i].idProduit) {
               this.listeMaDerniereCommande.push(this.listeProduit[j]);
@@ -102,5 +96,28 @@ export class PanierComponent implements OnInit {
   public emitProduits() {
     this.lsiteProduitChange.next(this.listeProduit);
   }
+
+  creerCommande() {
+    let total = 0;
+    let derniereNumeroCommandeBD = 0;
+    const nbCommande = this.listeCommande.length;
+      derniereNumeroCommandeBD = this.listeCommande[nbCommande - 1].numeroCommande;
+
+
+    derniereNumeroCommandeBD += 1;
+    for (let i = 0; i < this.ListeAuPanier.length; i++) {
+      total = this.quantite[i] * this.ListeAuPanier[i].prix;
+      const tmpCommande = new Commande(this.messageId, this.ListeAuPanier[i].id, total, this.quantite[i], derniereNumeroCommandeBD);
+      this.listeCommande.push(tmpCommande);
+
+
+      this
+        .panierService
+        .createCommande(tmpCommande)
+        .subscribe(commande => tmpCommande.id = Utilisateur.fromJSON(commande).id);
+    }
+  }
+
+
 
 }

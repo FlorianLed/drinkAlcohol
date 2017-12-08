@@ -44,10 +44,10 @@ export class InscriptionComponent implements OnInit {
 
   public creerUtilisateur() {
 
-    if(this.tmpMp != this.tmpCmp)
+    if (this.tmpMp != this.tmpCmp)
     {
       this.tmpCmp = '';
-      this.tmpMp='';
+      this.tmpMp = '';
     }
     else
     {

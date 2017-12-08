@@ -1,5 +1,5 @@
 import {current} from 'codelyzer/util/syntaxKind';
-import {PanierComponent} from "./panier/panier.component";
+import {PanierComponent} from './panier/panier.component';
 
 export class Produit {
 

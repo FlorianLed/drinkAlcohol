@@ -35,34 +35,24 @@
           <input type="text" class="form-control"  name="mp" placeholder="Mot de passe">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" >Confirmer</button>
+          <button type="button" class="btn btn-default" (click)="creerCommande()" data-dismiss="modal">Confirmer</button>
         </div>
       </div>
 
     </div>
   </div>
 
-
-
 </div>
 
-
-<div *ngFor="let produit of listeMaDerniereCommande; index as i;">
-  {{produit.nom}}
-</div>
-
+<h2>Ma dernière commande</h2>
 <div class="row itemsBlock">
   <div *ngFor="let produit of listeMaDerniereCommande; index as i" class="col-md-2">
     <div class="w3-card" style="width:90%">
       <img [src]="produit.urlImage" alt="Person" style="width:100%">
-      <span class="label label-success">X</span>
       <div class="w3-container">
         <br>
         <h6>{{produit.nom}}</h6>
-        <h6>Prix : {{produit.prix}}€</h6>
-        <h6>Quantité : <input type="number" class="form-control" [ngStyle]="{'color': quantite[i] <= produit.stock && quantite[i]>=1 ? 'green' : 'red'}" placeholder="Quantité de Stock" name="quantite" [(ngModel)]="quantite[i]"  min="1" [max]="produit.stock" required></h6>
-        <h6><button class="btn btn-success btn-lg" (click)="quantite[i] = quantite[i]+1">+</button> <button class="btn btn-danger btn-lg" (click)="quantite[i] = quantite[i]-1">-</button></h6>
-      </div>
+        <h6>Prix : {{produit.prix}}€</h6> </div>
       <br>
     </div>
     <br>
@@ -70,4 +60,4 @@
 </div>
 
 <br><br><br>
-<button (click)="historiqueCommande()">Afficher ma dernière commande</button>
+<button (click)="historiqueCommande()" onclick="this.disabled = 'disabled'">Afficher</button>

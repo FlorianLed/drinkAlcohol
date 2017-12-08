@@ -42,20 +42,16 @@ export class FilterPipe implements PipeTransform {
 
   transform(listeProduit: Produit[], term: any): Produit[] {
 
-      if (term === undefined)
-      {
+      if (term === undefined) {
         return listeProduit;
       }
-      else
-      {
-        if (term.toLowerCase().length < 5)
-        {
+      else {
+        if (term.toLowerCase().length < 5) {
           return listeProduit.filter(function (produit) {
             return produit.nom.toLowerCase().includes(term.toLowerCase());
           });
         }
-        else
-        {
+        else {
           return term.toLowerCase() ? listeProduit.filter((produit) => this.comparaison(produit.nom.toLowerCase(), term.toLowerCase()) <= 8) : listeProduit;
         }
       }

@@ -1,8 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {Utilisateur} from '../utilisateur';
 import {UtilisateurManagerService} from '../utilisateur-manager.service';
-import {FormControl} from '@angular/forms';
-import {HttpClient, HttpParams} from '@angular/common/http';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';

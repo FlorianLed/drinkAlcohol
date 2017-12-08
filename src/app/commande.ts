@@ -70,7 +70,7 @@ export class Commande {
     tmpCommande.idProduit = rawCommande['IdProduit'];
     tmpCommande.total = rawCommande['Total'];
     tmpCommande.quantite = rawCommande['Quantite'];
-    tmpCommande.quantite = rawCommande['NumeroCommande'];
+    tmpCommande.numeroCommande = rawCommande['NumeroCommande'];
     return tmpCommande;
   }
 

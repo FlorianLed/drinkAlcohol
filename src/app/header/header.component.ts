@@ -1,8 +1,7 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Produit} from '../produit';
 import {ProduitManagerService} from '../produit-manager.service';
 import {PanierService} from '../panier.service';
-import {FilterPipe} from '../filter.pipe';
 import {UtilisateurService} from '../utilisateur.service';
 import {Utilisateur} from '../utilisateur';
 
@@ -24,6 +23,7 @@ export class HeaderComponent implements OnInit {
   public term;
   lat = 50.45167199999999;
   lng = 3.984348100000034;
+  private _id: number;
 
   public message: string;
   @Output() public lsiteProduitChange: EventEmitter<Produit []> = new EventEmitter();
@@ -45,18 +45,6 @@ export class HeaderComponent implements OnInit {
   public emitProduits() {
     this.lsiteProduitChange.next(this.listeProduit);
   }
-
-  public recherche(recherche: string) {
-    this.listeProduit = [];
-    for (let i = 0; i < this.listeProduit.length; i++) {
-      const pos = this.listeProduit[i].nom.toLowerCase().search(recherche.toLowerCase());
-      if (pos >= 0) {
-        this.listeProduit.push(this.listeProduit[i]);
-      }
-    }
-  }
-
-  private _id: number;
 
    get id(): number {
     return this._id;

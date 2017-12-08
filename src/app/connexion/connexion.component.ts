@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UtilisateurManagerService} from '../utilisateur-manager.service';
 import {Utilisateur} from '../utilisateur';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UtilisateurService} from "../utilisateur.service";
+import {UtilisateurService} from '../utilisateur.service';
 
 
 @Component({
@@ -38,9 +38,6 @@ export class ConnexionComponent implements OnInit {
   seConnecter() {
     for (let i = 0; i < this.listeUtilisateurs.length; i++) {
       if (this.tmpEmail === this.listeUtilisateurs[i].mail && this.tmpMP === this.listeUtilisateurs[i].mp) {
-        console.log(this.listeUtilisateurs.length);
-        console.log(this.listeUtilisateurs[i].nom);
-        console.log(this.listeUtilisateurs[i].admin);
         if (this.listeUtilisateurs[i].admin === true) {
           this.router.navigate(['../admin-page-principal'], { relativeTo: this.route });
           this.tmpEmail = '';
@@ -48,7 +45,7 @@ export class ConnexionComponent implements OnInit {
           this.user.changeMessage(this.listeUtilisateurs[i].nom);
           return;
         }
-        else if(this.listeUtilisateurs[i].admin === false) {
+        else if (this.listeUtilisateurs[i].admin === false) {
           this.router.navigate(['../accueil'], { relativeTo: this.route });
           this.tmpEmail = '';
           this.tmpMP = '';

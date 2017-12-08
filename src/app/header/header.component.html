@@ -4,9 +4,6 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">DrinkAlcohol</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a routerLink="/contact">Contact</a></li>
-    </ul>
     <form class="navbar-form navbar-left" id="filter">
       <div class="form-group" >
         <input type="text" class="form-control"  name="motcle" placeholder="Mot clé" [(ngModel)]="term" id="f" #f="ngModel">
@@ -42,7 +39,6 @@
       <input type="radio" name="typeFilterTodo" [value]="2" [(ngModel)]="typeFilterTodo"> >15€
     </label>
   </form>
-
 
   <br>
 
